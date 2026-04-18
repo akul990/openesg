@@ -11,7 +11,7 @@ export const metadata = {
 
 const leadership = [
   {
-    name: "Sarah Mitchell",
+    name: "Akul Bharti",
     role: "CEO & Co-Founder",
     location: "London, UK",
     bio: "Former Head of ESG Research at a top-five European asset manager. Led the design of responsible investment frameworks covering $120B AUM before co-founding openESG to solve the data fragmentation problem she faced daily.",
@@ -20,7 +20,7 @@ const leadership = [
     focus: ["ESG Strategy", "Investor Relations", "Regulatory Affairs"],
   },
   {
-    name: "James Okafor",
+    name: "Kirti Bhartiya",
     role: "CTO & Co-Founder",
     location: "Amsterdam, NL",
     bio: "ML engineer with ten years in NLP and information extraction at large-scale data companies. Built the core extraction pipeline that processes 200,000+ sustainability documents annually and keeps every score traceable to its source.",
