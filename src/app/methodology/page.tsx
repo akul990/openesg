@@ -2,9 +2,11 @@ import {
   ShieldCheck, Database, Cpu, BarChart3, BadgeCheck, RefreshCw,
   AlertTriangle, Eye, FileSearch, Globe, Layers, Zap,
 } from "lucide-react";
+import bgImage from "@/src/assets/bg 2.jpg";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { Frameworks } from "@/src/components/Frameworks";
+import { PageHero } from "@/src/components/PageHero";
 
 export const metadata = {
   title: "Methodology — openESG",
@@ -78,29 +80,26 @@ export default function MethodologyPage() {
       <main className="flex-1">
 
         {/* ── Hero ─────────────────────────────── */}
-        <section className="relative overflow-hidden bg-dark py-20 sm:py-28">
-          <div className="pointer-events-none absolute inset-0" aria-hidden>
-            <div className="absolute left-1/2 top-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
-          </div>
-          <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-emerald-100/80">
+        <PageHero src={bgImage}>
+          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white/75">
               <ShieldCheck className="h-3.5 w-3.5" /> Independent · Transparent · Rigorous
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
               How We Rate ESG Performance
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-emerald-100/75">
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-white/70">
               Our ratings are built on public data, AI-powered extraction, and sector-adjusted scoring — with no commercial relationships with the companies we rate.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               {["10,000+ Companies", "60+ Countries", "15+ Frameworks", "No Pay-to-Play"].map((b) => (
-                <span key={b} className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-emerald-50/90 backdrop-blur">
+                <span key={b} className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/85 backdrop-blur">
                   {b}
                 </span>
               ))}
             </div>
           </div>
-        </section>
+        </PageHero>
 
         {/* ── Independence ─────────────────────── */}
         <section className="bg-white py-14 sm:py-20">
@@ -239,7 +238,7 @@ export default function MethodologyPage() {
                 <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   We flag what others miss
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-emerald-100/75">
+                <p className="mt-4 text-base leading-relaxed text-white/70">
                   Vague aspirational claims, unverified certifications, scope exclusions, and narrative contradictions are systematically identified before they inflate a rating.
                 </p>
                 <div className="mt-8 space-y-4">
@@ -253,7 +252,7 @@ export default function MethodologyPage() {
                       <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                       <div>
                         <p className="text-sm font-semibold text-white">{t}</p>
-                        <p className="mt-1 text-sm text-emerald-100/65">{b}</p>
+                        <p className="mt-1 text-sm text-white/60">{b}</p>
                       </div>
                     </div>
                   ))}
@@ -261,7 +260,7 @@ export default function MethodologyPage() {
               </div>
               <div className="space-y-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                  <p className="text-xs font-bold uppercase tracking-widest text-emerald-100/60">Red-Flag Categories</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-white/55">Red-Flag Categories</p>
                   <ul className="mt-4 space-y-2">
                     {[
                       "Absolute targets without interim milestones",
@@ -271,7 +270,7 @@ export default function MethodologyPage() {
                       "Social KPIs that change definition year-on-year",
                       "Board diversity claims not reconciled with proxy filings",
                     ].map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-emerald-100/75">
+                      <li key={item} className="flex items-start gap-2 text-sm text-white/70">
                         <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
                         {item}
                       </li>
@@ -315,7 +314,7 @@ export default function MethodologyPage() {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               See our methodology in action
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-emerald-100/70">
+            <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
               Book a walkthrough and we'll walk you through a live rating — source documents, score breakdown, and greenwashing flags included.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

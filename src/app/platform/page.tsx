@@ -3,8 +3,10 @@ import {
   Search, Bell, FileDown, Users, Lock, Server, Code2,
   CheckCircle2, TrendingUp, Building2, Briefcase,
 } from "lucide-react";
+import bgImage from "@/src/assets/bg 3.jpg";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
+import { PageHero } from "@/src/components/PageHero";
 
 export const metadata = {
   title: "Platform — openESG",
@@ -123,19 +125,15 @@ export default function PlatformPage() {
       <main className="flex-1">
 
         {/* ── Hero ─────────────────────────────── */}
-        <section className="relative overflow-hidden bg-dark py-20 sm:py-28">
-          <div className="pointer-events-none absolute inset-0" aria-hidden>
-            <div className="absolute left-1/2 top-1/2 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
-            <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
-          </div>
-          <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            <span className="inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-emerald-100/80">
+        <PageHero src={bgImage}>
+          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <span className="inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white/75">
               Platform Overview
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
               ESG intelligence built for serious investors
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-emerald-100/75">
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-white/70">
               One platform to search, analyse, benchmark, and monitor ESG performance across 10,000+ companies — powered by AI and mapped to every major framework.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -147,7 +145,7 @@ export default function PlatformPage() {
               </button>
             </div>
           </div>
-        </section>
+        </PageHero>
 
         {/* ── Core Capabilities ────────────────── */}
         <section className="bg-white py-14 sm:py-20">
@@ -237,10 +235,10 @@ export default function PlatformPage() {
                 <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   Plug our data into your stack
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-emerald-100/75">
+                <p className="mt-4 text-base leading-relaxed text-white/70">
                   Our REST API is designed for portfolio systems, quant models, and internal reporting platforms. Every endpoint returns structured JSON with full audit metadata.
                 </p>
-                <ul className="mt-6 space-y-3 text-sm text-emerald-100/75">
+                <ul className="mt-6 space-y-3 text-sm text-white/70">
                   {[
                     "Company search & full score endpoint",
                     "Portfolio aggregation & screening",
@@ -260,7 +258,7 @@ export default function PlatformPage() {
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6 font-mono text-sm">
                 <p className="text-emerald-400/70 text-xs mb-3"># GET /v1/companies/{"{ticker}"}/esg</p>
-                <pre className="text-emerald-100/85 whitespace-pre-wrap leading-relaxed text-xs">{`{
+                <pre className="text-white/80 whitespace-pre-wrap leading-relaxed text-xs">{`{
   "ticker": "AAPL",
   "name": "Apple Inc.",
   "composite_score": 74,
@@ -311,7 +309,7 @@ export default function PlatformPage() {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Start with a live demo
             </h2>
-            <p className="mt-4 text-base text-emerald-100/70">
+            <p className="mt-4 text-base text-white/65">
               We'll walk you through a real portfolio screen, an API call, and a greenwashing case study — all in 30 minutes.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

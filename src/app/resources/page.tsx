@@ -2,8 +2,10 @@ import {
   BookOpen, FileText, Video, Code2, Mail, ArrowRight,
   Globe, Layers, BarChart2, ShieldAlert,
 } from "lucide-react";
+import bgImage from "@/src/assets/bg 1.jpg";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
+import { PageHero } from "@/src/components/PageHero";
 
 export const metadata = {
   title: "Resources — openESG",
@@ -54,7 +56,7 @@ const guides = [
   },
   {
     tag: "Data & API",
-    tagColor: "bg-slate-100 text-slate-700",
+    tagColor: "bg-teal-100 text-teal-700",
     icon: Code2,
     title: "Integrating ESG Data into Quant Models",
     description: "Practical patterns for ingesting ESG scores alongside financial data — handling missing values, normalising across sectors, and avoiding look-ahead bias.",
@@ -114,22 +116,19 @@ export default function ResourcesPage() {
       <main className="flex-1">
 
         {/* ── Hero ─────────────────────────────── */}
-        <section className="relative overflow-hidden bg-dark py-20 sm:py-28">
-          <div className="pointer-events-none absolute inset-0" aria-hidden>
-            <div className="absolute left-1/2 top-1/3 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
-          </div>
-          <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-emerald-100/80">
+        <PageHero src={bgImage}>
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white/75">
               <BookOpen className="h-3.5 w-3.5" /> Knowledge Hub
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
               Everything you need to master ESG
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-emerald-100/75">
+            <p className="mx-auto mt-5 max-w-xl text-lg text-white/70">
               Guides, framework explainers, a practitioner glossary, webinar recordings, and full API documentation — all free.
             </p>
           </div>
-        </section>
+        </PageHero>
 
         {/* ── Featured Guides ──────────────────── */}
         <section className="bg-surface py-14 sm:py-20">
@@ -235,7 +234,7 @@ export default function ResourcesPage() {
                 <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   API Documentation
                 </h2>
-                <p className="mt-4 text-base text-emerald-100/75">
+                <p className="mt-4 text-base text-white/70">
                   Full OpenAPI 3.0 reference, authentication guide, rate-limit details, example requests in cURL, Python, and JavaScript, and a Postman collection.
                 </p>
                 <div className="mt-6 flex gap-3">
@@ -247,7 +246,7 @@ export default function ResourcesPage() {
                   </button>
                 </div>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 font-mono text-xs text-emerald-100/80">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 font-mono text-xs text-white/75">
                 <p className="text-emerald-400/70 mb-2"># Python example</p>
                 <pre className="whitespace-pre-wrap leading-relaxed">{`import openesg
 

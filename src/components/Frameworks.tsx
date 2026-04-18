@@ -77,10 +77,9 @@ const frameworks: {
 ];
 
 const toneStyles = {
-  green:
-    "border-emerald-100 bg-emerald-50/60 text-emerald-900 ring-emerald-100/80",
-  blue: "border-sky-100 bg-sky-50/70 text-sky-950 ring-sky-100/80",
-  teal: "border-teal-100 bg-teal-50/70 text-teal-950 ring-teal-100/80",
+  green: "border-emerald-100 bg-emerald-50/60 text-emerald-900 ring-emerald-100/80",
+  blue:  "border-sky-100 bg-sky-50/70 text-sky-950 ring-sky-100/80",
+  teal:  "border-teal-100 bg-teal-50/70 text-teal-950 ring-teal-100/80",
 } as const;
 
 export function Frameworks() {

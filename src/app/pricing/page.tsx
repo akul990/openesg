@@ -1,6 +1,8 @@
 import { Check, X, HelpCircle } from "lucide-react";
+import bgImage from "@/src/assets/bg 4.jpg";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
+import { PageHero } from "@/src/components/PageHero";
 
 export const metadata = {
   title: "Pricing — openESG",
@@ -126,23 +128,23 @@ export default function PricingPage() {
       <main className="flex-1">
 
         {/* ── Hero ─────────────────────────────── */}
-        <section className="bg-surface py-16 sm:py-24">
+        <PageHero src={bgImage}>
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Simple, transparent pricing
             </h1>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-slate-600">
+            <p className="mx-auto mt-4 max-w-xl text-lg text-white/70">
               No hidden fees. No lock-in. Cancel or change plans any time.
             </p>
-            <div className="mt-5 flex justify-center gap-6 text-sm text-slate-500">
+            <div className="mt-5 flex justify-center gap-6 text-sm text-white/65">
               {["SOC 2 compliant", "Data updated daily", "14-day free trial"].map((b) => (
                 <span key={b} className="flex items-center gap-1.5">
-                  <Check className="h-4 w-4 text-primary" />{b}
+                  <Check className="h-4 w-4 text-accent" />{b}
                 </span>
               ))}
             </div>
           </div>
-        </section>
+        </PageHero>
 
         {/* ── Tiers ────────────────────────────── */}
         <section className="bg-white py-4 sm:py-8">
@@ -162,14 +164,14 @@ export default function PricingPage() {
                       {tier.badge}
                     </span>
                   )}
-                  <p className={`text-xs font-bold uppercase tracking-widest ${tier.highlight ? "text-emerald-200" : "text-slate-500"}`}>
+                  <p className={`text-xs font-bold uppercase tracking-widest ${tier.highlight ? "text-white/80" : "text-slate-500"}`}>
                     {tier.name}
                   </p>
                   <p className={`mt-3 text-5xl font-black ${tier.highlight ? "text-white" : "text-slate-900"}`}>
-                    {tier.price}<span className={`text-lg font-semibold ${tier.highlight ? "text-emerald-200" : "text-slate-400"}`}>{tier.period}</span>
+                    {tier.price}<span className={`text-lg font-semibold ${tier.highlight ? "text-white/80" : "text-slate-400"}`}>{tier.period}</span>
                   </p>
-                  <p className={`mt-2 text-sm ${tier.highlight ? "text-emerald-100/80" : "text-slate-500"}`}>{tier.tagline}</p>
-                  <ul className={`mt-7 flex-1 space-y-2.5 text-sm ${tier.highlight ? "text-emerald-50/90" : "text-slate-600"}`}>
+                  <p className={`mt-2 text-sm ${tier.highlight ? "text-white/75" : "text-slate-500"}`}>{tier.tagline}</p>
+                  <ul className={`mt-7 flex-1 space-y-2.5 text-sm ${tier.highlight ? "text-white/85" : "text-slate-600"}`}>
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-2">
                         <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${tier.highlight ? "bg-accent" : "bg-primary"}`} />
@@ -244,7 +246,7 @@ export default function PricingPage() {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Not sure which plan is right for you?
             </h2>
-            <p className="mt-4 text-base text-emerald-100/70">
+            <p className="mt-4 text-base text-white/65">
               Our team will help you scope the right plan in a 20-minute call — no hard sell, no obligation.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

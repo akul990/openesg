@@ -28,13 +28,16 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 -top-[25%] bottom-0 will-change-transform"
         aria-hidden
       >
-        <Image
-          src={heroBg}
-          alt=""
-          fill
-          className="object-cover object-center"
-          priority
-        />
+        {/* Ken Burns zoom-pan animation */}
+        <div className="animate-ken-burns absolute inset-0">
+          <Image
+            src={heroBg}
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
         {/* Dark overlay to keep text readable */}
         <div className="absolute inset-0 bg-dark/70" />
 
@@ -80,7 +83,7 @@ export function Hero() {
             The World&apos;s Most Trusted Independent ESG &amp; CSR Rating
             Platform
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg text-emerald-100/80 sm:text-xl">
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg text-white/75 sm:text-xl">
             We evaluate 10,000+ companies across 60 countries using AI-powered
             analysis mapped to GRI, SASB, TCFD, CSRD, and ISSB frameworks.
           </p>
@@ -108,7 +111,7 @@ export function Hero() {
           ].map((label) => (
             <span
               key={label}
-              className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-emerald-50/90 backdrop-blur transition-colors hover:border-accent/40 hover:bg-white/10 sm:text-sm"
+              className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/85 backdrop-blur transition-colors hover:border-accent/40 hover:bg-white/10 sm:text-sm"
             >
               {label}
             </span>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
@@ -14,6 +15,7 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
@@ -26,15 +28,21 @@ export function Navbar() {
         </Link>
 
         <div className="hidden flex-1 items-center justify-center gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-primary"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative text-sm font-medium transition-colors duration-200 hover:text-primary ${active ? "text-primary" : "text-slate-500"}`}
+              >
+                {link.label}
+                {active && (
+                  <span className="absolute -bottom-[17px] left-0 right-0 h-0.5 rounded-full bg-primary" />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -66,16 +74,19 @@ export function Navbar() {
       {open ? (
         <div className="border-t border-slate-100 bg-white px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-lg px-2 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-primary"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`rounded-lg border-l-2 px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-50 hover:text-primary ${active ? "border-primary bg-primary/5 text-primary" : "border-transparent text-slate-600"}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <button
               type="button"
               className="mt-2 w-full rounded-full border border-slate-200 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-primary/40 hover:text-primary"

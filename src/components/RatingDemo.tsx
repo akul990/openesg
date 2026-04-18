@@ -1,6 +1,6 @@
 const insights = [
   {
-    tone: "bg-emerald-400",
+    tone: "bg-green-400",
     text: "Strong Scope 1 and 2 disclosure with third-party assurance referenced in the sustainability report.",
   },
   {
@@ -12,7 +12,7 @@ const insights = [
     text: "Board diversity below sector median based on latest proxy statement and committee composition.",
   },
   {
-    tone: "bg-emerald-400",
+    tone: "bg-green-400",
     text: "Community investment up 34% year over year with project-level outcomes disclosed in the CSR annex.",
   },
 ];
@@ -28,7 +28,7 @@ export function RatingDemo() {
                 <p className="text-lg font-semibold text-white">
                   Acme Corporation
                 </p>
-                <p className="mt-1 text-sm text-emerald-100/75">
+                <p className="mt-1 text-sm text-white/70">
                   Consumer Goods — NYSE: ACM
                 </p>
               </div>
@@ -57,20 +57,20 @@ export function RatingDemo() {
                 </svg>
                 <div className="relative text-center">
                   <p className="text-3xl font-bold text-white">74</p>
-                  <p className="text-xs font-semibold text-emerald-100/80">
+                  <p className="text-xs font-semibold text-white/75">
                     /100
                   </p>
                 </div>
               </div>
             </div>
 
-            <p className="mt-2 text-xs font-medium uppercase tracking-wide text-emerald-100/70">
+            <p className="mt-2 text-xs font-medium uppercase tracking-wide text-white/65">
               Overall ESG score
             </p>
 
             <div className="mt-8 space-y-4">
               <div>
-                <div className="flex items-center justify-between text-xs font-semibold text-emerald-50/90">
+                <div className="flex items-center justify-between text-xs font-semibold text-white/85">
                   <span>Environment</span>
                   <span>68</span>
                 </div>
@@ -79,7 +79,7 @@ export function RatingDemo() {
                 </div>
               </div>
               <div>
-                <div className="flex items-center justify-between text-xs font-semibold text-emerald-50/90">
+                <div className="flex items-center justify-between text-xs font-semibold text-white/85">
                   <span>Social</span>
                   <span>79</span>
                 </div>
@@ -88,7 +88,7 @@ export function RatingDemo() {
                 </div>
               </div>
               <div>
-                <div className="flex items-center justify-between text-xs font-semibold text-emerald-50/90">
+                <div className="flex items-center justify-between text-xs font-semibold text-white/85">
                   <span>Governance</span>
                   <span>81</span>
                 </div>
@@ -105,7 +105,7 @@ export function RatingDemo() {
               {["GRI Aligned", "TCFD Compliant", "SBTi Committed"].map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-white/10 px-3 py-1 text-xs font-medium text-emerald-50/85"
+                  className="rounded-full border border-white/10 px-3 py-1 text-xs font-medium text-white/80"
                 >
                   {tag}
                 </span>
@@ -114,7 +114,7 @@ export function RatingDemo() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-emerald-100/80">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-white/75">
               AI-generated diligence notes
             </h3>
             <div className="grid gap-3">
@@ -127,13 +127,13 @@ export function RatingDemo() {
                     className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${item.tone}`}
                     aria-hidden
                   />
-                  <p className="text-sm leading-relaxed text-emerald-50/90">
+                  <p className="text-sm leading-relaxed text-white/85">
                     {item.text}
                   </p>
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-xs leading-relaxed text-emerald-100/60">
+            <p className="mt-2 text-xs leading-relaxed text-white/55">
               Ratings based on publicly disclosed information only.
             </p>
           </div>

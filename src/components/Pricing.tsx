@@ -44,14 +44,14 @@ export function Pricing() {
             <span className="absolute -top-3 left-1/2 w-max -translate-x-1/2 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary">
               Most Popular
             </span>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-100">
+            <p className="text-sm font-semibold uppercase tracking-wide text-white/80">
               Professional
             </p>
             <p className="mt-3 text-4xl font-bold">$999/mo</p>
-            <p className="mt-2 text-sm font-medium text-emerald-50/90">
+            <p className="mt-2 text-sm font-medium text-white/85">
               For asset managers running systematic and fundamental ESG sleeves
             </p>
-            <ul className="mt-6 flex-1 space-y-3 text-sm text-emerald-50/95">
+            <ul className="mt-6 flex-1 space-y-3 text-sm text-white/90">
               <li className="flex gap-2">
                 <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                 5,000 companies with full pillar, theme, and metric-level scores
