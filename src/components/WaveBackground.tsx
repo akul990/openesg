@@ -23,12 +23,14 @@ export function WaveBackground() {
     let t = 0;
 
     function resize() {
+      if (!canvas) return;
       const parent = canvas.parentElement;
       canvas.width  = parent ? parent.offsetWidth  : window.innerWidth;
       canvas.height = parent ? parent.offsetHeight : window.innerHeight;
     }
 
     function drawWave(w: typeof WAVES[0]) {
+      if (!canvas || !ctx) return;
       const { width, height } = canvas;
       const baseY = height * w.y;
 
@@ -51,6 +53,7 @@ export function WaveBackground() {
     }
 
     function frame() {
+      if (!canvas || !ctx) return;
       t += 0.005;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (const w of WAVES) drawWave(w);
