@@ -1,5 +1,5 @@
 import { Check, X, HelpCircle } from "lucide-react";
-import bgImage from "@/src/assets/bg 4.jpg";
+import bgImage from "@/src/assets/bg-4.webp";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { PageHero } from "@/src/components/PageHero";

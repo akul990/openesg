@@ -1,6 +1,6 @@
 import { Linkedin, Twitter } from "@/src/components/SocialIcons";
 import { MapPin, Briefcase, ArrowRight } from "lucide-react";
-import bgImage from "@/src/assets/bg 2.jpg";
+import bgImage from "@/src/assets/bg-2.webp";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { PageHero } from "@/src/components/PageHero";

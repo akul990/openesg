@@ -2,7 +2,7 @@ import {
   BookOpen, FileText, Video, Code2, Mail, ArrowRight,
   Globe, Layers, BarChart2, ShieldAlert,
 } from "lucide-react";
-import bgImage from "@/src/assets/bg 1.jpg";
+import bgImage from "@/src/assets/bg-1.webp";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { PageHero } from "@/src/components/PageHero";

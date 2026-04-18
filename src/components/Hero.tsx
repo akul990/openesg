@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import heroBg from "@/src/assets/hero-bg.webp";
 import { Leaf } from "@/src/components/NatureDecor";
+import { CompanySearchModal } from "@/src/components/CompanySearchModal";
 
 
 export function Hero() {
   const bgRef = useRef<HTMLDivElement>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,6 +92,7 @@ export function Hero() {
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <button
               type="button"
+              onClick={() => setSearchOpen(true)}
               className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:bg-accent/90 hover:shadow-xl"
             >
               Search a Company
@@ -119,6 +122,8 @@ export function Hero() {
         </div>
 
       </div>
+
+      {searchOpen && <CompanySearchModal onClose={() => setSearchOpen(false)} />}
     </section>
   );
 }

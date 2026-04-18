@@ -3,7 +3,7 @@ import {
   Search, Bell, FileDown, Users, Lock, Server, Code2,
   CheckCircle2, TrendingUp, Building2, Briefcase,
 } from "lucide-react";
-import bgImage from "@/src/assets/bg 3.jpg";
+import bgImage from "@/src/assets/bg-3.webp";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { PageHero } from "@/src/components/PageHero";

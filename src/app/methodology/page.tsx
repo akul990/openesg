@@ -2,7 +2,7 @@ import {
   ShieldCheck, Database, Cpu, BarChart3, BadgeCheck, RefreshCw,
   AlertTriangle, Eye, FileSearch, Globe, Layers, Zap,
 } from "lucide-react";
-import bgImage from "@/src/assets/bg 2.jpg";
+import bgImage from "@/src/assets/bg-2.webp";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { Frameworks } from "@/src/components/Frameworks";
