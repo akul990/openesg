@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import heroBg from "@/src/assets/hero-bg.webp";
+import { Leaf } from "@/src/components/NatureDecor";
 
 
 export function Hero() {
@@ -36,6 +37,32 @@ export function Hero() {
         />
         {/* Dark overlay to keep text readable */}
         <div className="absolute inset-0 bg-dark/70" />
+
+        {/* Floating botanical leaves */}
+        <div className="absolute inset-0 overflow-hidden" aria-hidden>
+          <div className="animate-leaf-drift absolute left-[7%] top-[14%] text-white opacity-[0.07]" style={{ animationDelay: "0s", animationDuration: "10s" }}>
+            <Leaf size={92} rotate={-20} />
+          </div>
+          <div className="animate-leaf-drift absolute right-[9%] top-[8%] text-white opacity-[0.05]" style={{ animationDelay: "2.5s", animationDuration: "12s" }}>
+            <Leaf size={62} rotate={35} />
+          </div>
+          <div className="animate-leaf-drift absolute left-[2%] top-[58%] text-white opacity-[0.06]" style={{ animationDelay: "1.2s", animationDuration: "14s" }}>
+            <Leaf size={50} rotate={18} />
+          </div>
+          <div className="animate-leaf-drift absolute bottom-[18%] right-[5%] text-white opacity-[0.08]" style={{ animationDelay: "4s", animationDuration: "9s" }}>
+            <Leaf size={108} rotate={-38} />
+          </div>
+          <div className="animate-leaf-drift absolute bottom-[8%] left-[22%] text-white opacity-[0.04]" style={{ animationDelay: "6s", animationDuration: "13s" }}>
+            <Leaf size={74} rotate={52} />
+          </div>
+        </div>
+      </div>
+
+      {/* Organic wave transition to next section */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0" aria-hidden>
+        <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="block w-full">
+          <path d="M0,28 C360,56 720,0 1080,28 C1260,42 1380,14 1440,28 L1440,56 L0,56 Z" fill="white" />
+        </svg>
       </div>
 
       {/* Gradient blobs */}

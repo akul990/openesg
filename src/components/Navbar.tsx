@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const links = [
-  { label: "Platform", href: "#platform" },
-  { label: "Methodology", href: "#methodology" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Resources", href: "#resources" },
+  { label: "Platform",    href: "/platform"    },
+  { label: "Methodology", href: "/methodology" },
+  { label: "Pricing",     href: "/pricing"     },
+  { label: "Resources",   href: "/resources"   },
+  { label: "Team",        href: "/team"        },
 ];
 
 export function Navbar() {
@@ -16,22 +18,22 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <a
-          href="#"
+        <Link
+          href="/"
           className="text-lg font-bold tracking-tight text-primary transition-opacity hover:opacity-90"
         >
           openESG
-        </a>
+        </Link>
 
         <div className="hidden flex-1 items-center justify-center gap-8 md:flex">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-primary"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -65,14 +67,14 @@ export function Navbar() {
         <div className="border-t border-slate-100 bg-white px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="rounded-lg px-2 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-primary"
                 onClick={() => setOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <button
               type="button"

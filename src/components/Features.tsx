@@ -6,6 +6,7 @@ import {
   RefreshCw,
   Plug,
 } from "lucide-react";
+import { Leaf } from "@/src/components/NatureDecor";
 
 const cards = [
   {
@@ -54,8 +55,16 @@ const cards = [
 
 export function Features() {
   return (
-    <section id="platform" className="bg-surface py-12 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="platform" className="relative overflow-hidden bg-surface py-12 sm:py-20">
+      {/* Botanical watermark — top-right corner */}
+      <div className="pointer-events-none absolute -right-20 -top-20 text-primary opacity-[0.05]" aria-hidden>
+        <Leaf size={340} rotate={-25} />
+      </div>
+      {/* Botanical watermark — bottom-left corner */}
+      <div className="pointer-events-none absolute -bottom-16 -left-16 text-primary opacity-[0.04]" aria-hidden>
+        <Leaf size={240} rotate={140} />
+      </div>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
           Everything investors need to evaluate ESG performance
         </h2>

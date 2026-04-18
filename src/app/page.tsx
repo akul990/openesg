@@ -4,6 +4,7 @@ import { LogoStrip } from "@/src/components/LogoStrip";
 import { HowItWorks } from "@/src/components/HowItWorks";
 import { Features } from "@/src/components/Features";
 import { RatingDemo } from "@/src/components/RatingDemo";
+import { GlobalPresence } from "@/src/components/GlobalPresence";
 import { Frameworks } from "@/src/components/Frameworks";
 import { Pricing } from "@/src/components/Pricing";
 import { CTA } from "@/src/components/CTA";
@@ -20,6 +21,7 @@ export default function Home() {
         <Features />
         <RatingDemo />
         <Frameworks />
+        <GlobalPresence />
         <Pricing />
         <CTA />
       </main>

@@ -42,3 +42,20 @@ body {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+@keyframes leaf-drift {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+  70% {
+    transform: translateY(-8px) rotate(-4deg);
+  }
+}
+
+.animate-leaf-drift {
+  animation: leaf-drift 9s ease-in-out infinite;
+}

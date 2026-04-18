@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { FileText, Cpu, BarChart3, BadgeCheck } from "lucide-react";
+import { Leaf } from "@/src/components/NatureDecor";
 
 const steps = [
   {
@@ -30,8 +31,16 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="methodology" className="bg-white py-12 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="methodology" className="relative overflow-hidden bg-white py-12 sm:py-20">
+      {/* Botanical watermark — bottom-right */}
+      <div className="pointer-events-none absolute -bottom-24 -right-24 text-primary opacity-[0.05]" aria-hidden>
+        <Leaf size={380} rotate={20} />
+      </div>
+      {/* Small accent leaf — top-left */}
+      <div className="pointer-events-none absolute -left-10 top-10 text-primary opacity-[0.04]" aria-hidden>
+        <Leaf size={160} rotate={-140} />
+      </div>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
           Independent. Transparent. Global.
         </h2>
