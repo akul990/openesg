@@ -9,12 +9,15 @@ import { Frameworks } from "@/src/components/Frameworks";
 import { Pricing } from "@/src/components/Pricing";
 import { CTA } from "@/src/components/CTA";
 import { Footer } from "@/src/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 
 export default function Home() {
   return (
     <div className="flex min-h-full flex-col bg-white">
       <Navbar />
       <main className="flex-1">
+        <SpeedInsights />
         <Hero />
         <LogoStrip />
         <HowItWorks />
