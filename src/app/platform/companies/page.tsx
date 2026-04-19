@@ -285,6 +285,95 @@ function DonutChart({ segs }: { segs: { pct: number; color: string }[] }) {
   );
 }
 
+/* ── Greenwashing Risk Meter ────────────────────────────────────── */
+function GreenwashingRiskMeter({ co, ext }: { co: Company; ext: ExtData | undefined }) {
+  if (!ext?.weeklyWatch?.items?.length) return null;
+
+  const items = ext.weeklyWatch.items;
+  const counts = { greenwashing: 0, questionable: 0, genuine: 0 };
+  items.forEach(it => { counts[it.verdict as keyof typeof counts]++; });
+
+  // 0–100 composite score
+  const raw = counts.greenwashing * 30 + counts.questionable * 15 + counts.genuine * -5;
+  const score = Math.max(0, Math.min(100, raw));
+
+  const level =
+    score >= 70 ? { label: "High Risk",      short: "High",      color: "text-red-600",     bg: "bg-red-50",     border: "border-red-200",    bar: "bg-red-500",    ring: "ring-red-200"    } :
+    score >= 40 ? { label: "Moderate Risk",   short: "Moderate",  color: "text-amber-600",   bg: "bg-amber-50",   border: "border-amber-200",  bar: "bg-amber-400",  ring: "ring-amber-200"  } :
+                  { label: "Low Risk",         short: "Low",       color: "text-emerald-600", bg: "bg-emerald-50", border: "border-emerald-200",bar: "bg-emerald-500",ring: "ring-emerald-200" };
+
+  const drivers: { label: string; cls: string; count: number }[] = [
+    { label: "Greenwashing", cls: "bg-red-100 text-red-700 border-red-200",       count: counts.greenwashing },
+    { label: "Questionable", cls: "bg-amber-100 text-amber-700 border-amber-200", count: counts.questionable },
+    { label: "Genuine",      cls: "bg-emerald-100 text-emerald-700 border-emerald-200", count: counts.genuine },
+  ];
+
+  const topDriver = items
+    .filter(it => it.verdict === "greenwashing")
+    .concat(items.filter(it => it.verdict === "questionable"))[0] ?? null;
+
+  return (
+    <div className={`rounded-xl border ${level.border} p-4 shadow-sm`} style={{ background: "white" }}>
+      {/* Header row */}
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Greenwashing Risk Score</p>
+          <p className="mt-0.5 text-[10px] text-slate-400">Week of {ext.weeklyWatch.weekOf} · {items.length} disclosures analysed</p>
+        </div>
+        <span className={`rounded-full px-3 py-1 text-xs font-bold ring-1 ${level.color} ${level.bg} ${level.ring}`}>
+          {level.label}
+        </span>
+      </div>
+
+      {/* Score + gauge row */}
+      <div className="flex items-center gap-4">
+        {/* Big score */}
+        <div className={`flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-xl ring-2 ${level.bg} ${level.ring}`}>
+          <span className={`text-2xl font-black leading-none ${level.color}`}>{score}</span>
+          <span className="text-[9px] font-semibold text-slate-400">/100</span>
+        </div>
+
+        {/* Gauge + zone labels */}
+        <div className="flex-1">
+          <div className="relative h-3 w-full overflow-hidden rounded-full bg-slate-100">
+            {/* Zone ticks */}
+            <div className="absolute inset-y-0 left-[40%] w-px bg-slate-300/60" />
+            <div className="absolute inset-y-0 left-[70%] w-px bg-slate-300/60" />
+            {/* Fill */}
+            <div
+              className={`h-full rounded-full transition-all duration-700 ${level.bar}`}
+              style={{ width: `${score}%` }}
+            />
+          </div>
+          <div className="mt-1 flex justify-between text-[9px] font-semibold text-slate-300">
+            <span>Low</span>
+            <span className="ml-[30%]">Moderate</span>
+            <span>High</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Verdict breakdown pills */}
+      <div className="mt-3 flex flex-wrap gap-2">
+        {drivers.map(d => (
+          <span key={d.label} className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-semibold ${d.cls}`}>
+            <span className="tabular-nums font-black">{d.count}</span>
+            {d.label}
+          </span>
+        ))}
+      </div>
+
+      {/* Top risk driver */}
+      {topDriver && (
+        <div className={`mt-3 rounded-lg border ${level.border} ${level.bg} px-3 py-2`}>
+          <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Top Risk Driver</p>
+          <p className="mt-0.5 text-[11px] font-semibold leading-snug text-slate-700">{topDriver.headline}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ── ESG Rating Impact Chart ────────────────────────────────────── */
 function ESGRatingChart({ ext }: { ext: ExtData | undefined }) {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -524,10 +613,13 @@ function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
           ))}
         </div>
 
-        {/* ── 3. ESG Rating Impact Chart ────────────── */}
+        {/* ── 3. Greenwashing Risk Meter ────────────── */}
+        <GreenwashingRiskMeter co={co} ext={ext} />
+
+        {/* ── 4. ESG Rating Impact Chart ────────────── */}
         <ESGRatingChart ext={ext} />
 
-        {/* ── 4. Three-column section ────────────────── */}
+        {/* ── 5. Three-column section ────────────────── */}
         <div className="grid gap-4 lg:grid-cols-3">
 
           {/* ESG Score Breakdown */}

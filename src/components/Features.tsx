@@ -11,44 +11,44 @@ import { Leaf } from "@/src/components/NatureDecor";
 const cards = [
   {
     icon: Brain,
-    title: "AI-Powered Rating Engine",
+    title: "Automated Compliance Scanning",
     description:
-      "NLP extracts and scores claims across thousands of reports automatically, with human oversight on material issues.",
+      "Upload any report and our AI instantly identifies which regulatory obligations you meet, which you miss, and exactly what's needed to close the gap.",
     circle: "bg-emerald-100 text-emerald-700 ring-emerald-200",
   },
   {
     icon: ShieldAlert,
-    title: "Greenwashing Detection",
+    title: "Gap Analysis in Plain English",
     description:
-      "Flags vague, unverified, or contradictory sustainability claims before they skew portfolio-level analytics.",
+      "No jargon. Every missing disclosure is explained in simple language with a specific, actionable fix — designed for teams without a compliance background.",
     circle: "bg-amber-100 text-amber-700 ring-amber-200",
   },
   {
     icon: BarChart2,
-    title: "Peer Benchmarking",
+    title: "Benchmarking Against Your Peers",
     description:
-      "Compare any company against sector and regional peers instantly, including distribution of disclosure quality.",
+      "See how your ESG performance compares to sector peers of similar size — so you know whether you're ahead or behind, and where to focus first.",
     circle: "bg-sky-100 text-sky-700 ring-sky-200",
   },
   {
     icon: Layers,
-    title: "Multi-Framework Mapping",
+    title: "15+ Frameworks, One Platform",
     description:
-      "Scores mapped to GRI, SASB, TCFD, CSRD, ISSB simultaneously so teams stop reconciling spreadsheets by hand.",
+      "CSRD, GRI, TCFD, SASB, ISSB — mapped simultaneously from a single data input so you never reconcile the same numbers across five spreadsheets again.",
     circle: "bg-teal-100 text-teal-700 ring-teal-200",
   },
   {
     icon: RefreshCw,
-    title: "Real-Time Updates",
+    title: "Regulation Alerts, Always On",
     description:
-      "Ratings refresh as new disclosures drop, not once a year—critical when markets react to climate and human rights news.",
+      "New disclosure rules land constantly. OpenESG monitors every major regulatory update and flags when your compliance posture needs a refresh.",
     circle: "bg-indigo-100 text-indigo-700 ring-indigo-200",
   },
   {
     icon: Plug,
-    title: "API and Data Feeds",
+    title: "Affordable for Any Company Size",
     description:
-      "Integrate our ratings into your own tools via REST API for screening, monitoring, and client reporting workflows.",
+      "Flat-rate plans built for SMBs and growth-stage companies — not enterprise contracts priced at a percentage of AUM. Start for free, scale as you grow.",
     circle: "bg-slate-100 text-slate-700 ring-slate-200",
   },
 ];
@@ -66,7 +66,7 @@ export function Features() {
       </div>
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Everything investors need to evaluate ESG performance
+          Everything a growing company needs to stay ESG-compliant
         </h2>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card) => {

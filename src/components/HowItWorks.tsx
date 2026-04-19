@@ -5,27 +5,27 @@ import { Leaf } from "@/src/components/NatureDecor";
 const steps = [
   {
     icon: FileText,
-    title: "We collect public ESG and CSR reports",
+    title: "Upload your data in minutes",
     description:
-      "Annual reports, sustainability disclosures, CDP responses, and other filings are ingested in structured form.",
+      "Connect your existing reports, financials, or raw CSR data — no consultants, no custom templates, no IT project required.",
   },
   {
     icon: Cpu,
-    title: "AI extracts and structures the data",
+    title: "AI builds your compliance picture",
     description:
-      "Natural language models normalize metrics, targets, and narrative claims for consistent comparison.",
+      "Our engine automatically extracts metrics, flags gaps, and structures your disclosures against each framework's requirements.",
   },
   {
     icon: BarChart3,
-    title: "Scored against 15+ global frameworks",
+    title: "Gaps surfaced before regulators find them",
     description:
-      "Each disclosure is mapped to GRI, SASB, TCFD, CSRD, ISSB, and other widely used standards.",
+      "Every missing or weak disclosure is highlighted with a plain-English fix — so your team knows exactly what to address next.",
   },
   {
     icon: BadgeCheck,
-    title: "Independent rating published",
+    title: "Audit-ready report, instantly",
     description:
-      "Investors receive an objective score, peer context, and audit-ready evidence trails for diligence.",
+      "Export investor-grade ESG reports and compliance evidence packs mapped to CSRD, GRI, TCFD, SASB, and ISSB in one click.",
   },
 ];
 
@@ -42,7 +42,7 @@ export function HowItWorks() {
       </div>
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Independent. Transparent. Global.
+          ESG compliance in four steps — no consultant required
         </h2>
 
         <div className="mt-14 md:hidden">

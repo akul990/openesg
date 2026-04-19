@@ -81,36 +81,38 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/90 backdrop-blur">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            Built for companies that compliance tools forgot
+          </div>
           <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            The World&apos;s Most Trusted Independent ESG &amp; CSR Rating
-            Platform
+            ESG Compliance,<br className="hidden sm:block" /> Automated.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg text-white/75 sm:text-xl">
-            We evaluate 10,000+ companies across 60 countries using AI-powered
-            analysis mapped to GRI, SASB, TCFD, CSRD, and ISSB frameworks.
+            Stop paying Big 4 rates for ESG reports. OpenESG automatically maps your data to CSRD, GRI, TCFD, SASB, and ISSB — so any company can meet investor and regulatory requirements without a dedicated compliance team.
           </p>
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <button
               type="button"
-              onClick={() => setSearchOpen(true)}
               className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:bg-accent/90 hover:shadow-xl"
             >
-              Search a Company
+              Get Your ESG Score Free
             </button>
             <button
               type="button"
+              onClick={() => setSearchOpen(true)}
               className="rounded-full border-2 border-white/80 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white hover:bg-white/10"
             >
-              See How We Rate
+              See How It Works
             </button>
           </div>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           {[
-            "10,000+ Companies Rated",
-            "60+ Countries",
-            "15+ Frameworks",
+            "90% cheaper than consultants",
+            "Setup in under an hour",
+            "15+ frameworks auto-mapped",
           ].map((label) => (
             <span
               key={label}
