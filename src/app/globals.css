@@ -103,3 +103,6 @@ body {
 .animate-wave-shape-1 { animation: wave-shape-1 20s ease-in-out infinite; will-change: transform; }
 .animate-wave-shape-2 { animation: wave-shape-2 28s ease-in-out infinite; will-change: transform; }
 .animate-wave-shape-3 { animation: wave-shape-3 36s ease-in-out infinite; will-change: transform; }
+
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
