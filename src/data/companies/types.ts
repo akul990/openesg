@@ -1,9 +1,24 @@
+export type WeeklyWatchItem = {
+  date: string;
+  headline: string;
+  source: string;
+  verdict: "genuine" | "greenwashing" | "questionable";
+  relatedGoal: string;
+  analysis: string;
+};
+
 export type ExtData = {
   emissions: { value: string; trend: string; trendDir: "down" | "up"; goal: string; goalDetail: string };
   progressMetrics: { label: string; pct: number; detail: string }[];
   emissionsBreakdown: { label: string; pct: number; value: string; color: string }[];
   highlights: { value: string; label: string; icon: string }[];
   risks: { label: string; detail: string; dot: string }[];
+  weeklyWatch?: {
+    weekOf: string;
+    items: WeeklyWatchItem[];
+    priorHistory: { label: string; score: number }[];
+    weeklyDeltas: number[];
+  };
 };
 
 export type CompanyData = {

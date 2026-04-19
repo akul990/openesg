@@ -285,6 +285,177 @@ function DonutChart({ segs }: { segs: { pct: number; color: string }[] }) {
   );
 }
 
+/* ── ESG Rating Impact Chart ────────────────────────────────────── */
+function ESGRatingChart({ ext }: { ext: ExtData | undefined }) {
+  const [hovered, setHovered] = useState<number | null>(null);
+  const [clicked, setClicked] = useState<number | null>(null);
+  const ww = ext?.weeklyWatch;
+  if (!ww?.priorHistory?.length || !ww?.weeklyDeltas?.length) return null;
+
+  const M = { top: 24, right: 36, bottom: 36, left: 38 };
+  const VW = 600, VH = 190;
+  const pw = VW - M.left - M.right;
+  const ph = VH - M.top - M.bottom;
+
+  const baseScore = ww.priorHistory[ww.priorHistory.length - 1].score;
+  let running = baseScore;
+  const weeklyPts = ww.items.map((item, i) => {
+    running = parseFloat((running + ww.weeklyDeltas[i]).toFixed(1));
+    return { label: item.date.replace(/,.*/, ""), score: running, verdict: item.verdict };
+  });
+
+  type Pt = { label: string; score: number; verdict: string };
+  const allData: Pt[] = [
+    ...ww.priorHistory.map(h => ({ ...h, verdict: "history" })),
+    ...weeklyPts,
+  ];
+  const hl = ww.priorHistory.length;
+
+  const scores = allData.map(d => d.score);
+  const minS = Math.floor(Math.min(...scores)) - 1;
+  const maxS = Math.ceil(Math.max(...scores)) + 1;
+  const xOf = (i: number) => M.left + (i / (allData.length - 1)) * pw;
+  const yOf = (s: number) => M.top + ph - ((s - minS) / (maxS - minS)) * ph;
+
+  const pts = allData.map((d, i) => ({ ...d, x: xOf(i), y: yOf(d.score) }));
+  const mkPath = (sl: typeof pts) => sl.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
+  const area = mkPath(pts) + ` L${pts[pts.length - 1].x},${M.top + ph} L${pts[0].x},${M.top + ph}Z`;
+  const divX = (pts[hl - 1].x + pts[hl].x) / 2;
+
+  const dot: Record<string, string> = {
+    history: "#6ee7b7",
+    genuine: "#10b981",
+    greenwashing: "#ef4444",
+    questionable: "#f59e0b",
+  };
+
+  const verdictStyle: Record<string, { badge: string; border: string; bg: string; label: string }> = {
+    genuine:      { badge: "bg-emerald-100 text-emerald-700", border: "border-emerald-200", bg: "bg-emerald-50",  label: "Genuine" },
+    greenwashing: { badge: "bg-red-100 text-red-700",         border: "border-red-200",     bg: "bg-red-50",      label: "Greenwashing" },
+    questionable: { badge: "bg-amber-100 text-amber-700",     border: "border-amber-200",   bg: "bg-amber-50",    label: "Questionable" },
+  };
+
+  const tr = (s: string, n: number) => s.length > n ? s.slice(0, n) + "…" : s;
+
+  const yTicks: number[] = [];
+  for (let t = Math.ceil(minS); t <= Math.floor(maxS); t++) yTicks.push(t);
+
+  const clickedItem = clicked !== null && clicked >= hl ? ww.items[clicked - hl] : null;
+  const clickedDelta = clicked !== null && clicked >= hl ? ww.weeklyDeltas[clicked - hl] : null;
+  const clickedScore = clicked !== null && clicked >= hl ? pts[clicked].score : null;
+
+  return (
+    <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">ESG Rating Impact — Weekly Watch</p>
+        <div className="flex flex-wrap items-center gap-3">
+          {([["#10b981","Genuine"],["#ef4444","Greenwashing"],["#f59e0b","Questionable"]] as [string,string][]).map(([c, l]) => (
+            <span key={l} className="flex items-center gap-1 text-[10px] text-slate-500">
+              <span className="inline-block h-2 w-2 rounded-full" style={{ background: c }} />{l}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <svg viewBox={`0 0 ${VW} ${VH}`} className="w-full" style={{ height: "auto", overflow: "visible" }}>
+        <defs>
+          <linearGradient id="esgGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#10b981" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        {yTicks.map(t => (
+          <g key={t}>
+            <line x1={M.left} y1={yOf(t)} x2={M.left + pw} y2={yOf(t)} stroke="#f1f5f9" strokeWidth="1" />
+            <text x={M.left - 6} y={yOf(t)} textAnchor="end" dominantBaseline="middle" fontSize="9" fill="#94a3b8">{t}</text>
+          </g>
+        ))}
+        <line x1={M.left} y1={yOf(baseScore)} x2={M.left + pw} y2={yOf(baseScore)} stroke="#e2e8f0" strokeWidth="1" strokeDasharray="4 3" />
+        <line x1={divX} y1={M.top - 10} x2={divX} y2={M.top + ph} stroke="#cbd5e1" strokeWidth="1" strokeDasharray="3 3" />
+        <text x={divX + 5} y={M.top - 2} fontSize="8" fill="#94a3b8" fontStyle="italic">This week</text>
+
+        <path d={area} fill="url(#esgGrad)" />
+        <path d={mkPath(pts.slice(0, hl))} fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d={mkPath(pts.slice(hl - 1))} fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="5 3" />
+
+        {pts.map((p, i) => {
+          const isW = i >= hl;
+          const isClicked = clicked === i;
+          const r = isW ? (hovered === i || isClicked ? 7 : 5) : 3.5;
+          return (
+            <g key={i} style={{ cursor: isW ? "pointer" : "default" }}
+              onMouseEnter={() => isW && setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              onClick={() => isW && setClicked(isClicked ? null : i)}>
+              {isClicked && <circle cx={p.x} cy={p.y} r={r + 5} fill={dot[p.verdict] ?? "#94a3b8"} opacity="0.18" />}
+              <circle cx={p.x} cy={p.y} r={r + 6} fill="transparent" />
+              <circle cx={p.x} cy={p.y} r={r} fill={dot[p.verdict] ?? "#94a3b8"} stroke="white" strokeWidth={isClicked ? 2.5 : 1.5} />
+            </g>
+          );
+        })}
+
+        {/* Hover tooltip — only when not clicked */}
+        {hovered !== null && hovered >= hl && hovered !== clicked && (() => {
+          const p = pts[hovered];
+          const item = ww.items[hovered - hl];
+          const delta = ww.weeklyDeltas[hovered - hl];
+          const ttW = 200;
+          const ttX = Math.min(Math.max(p.x - ttW / 2, M.left), M.left + pw - ttW);
+          const ttY = p.y - 72;
+          return (
+            <g style={{ pointerEvents: "none" }}>
+              <rect x={ttX} y={ttY} width={ttW} height={65} rx="7" fill="white" stroke="#e2e8f0" strokeWidth="1" filter="drop-shadow(0 2px 8px rgba(0,0,0,0.10))" />
+              {/* source · date */}
+              <text x={ttX + 10} y={ttY + 14} fontSize="8" fill="#94a3b8">{item.source} · {p.label}</text>
+              {/* score + delta */}
+              <text x={ttX + 10} y={ttY + 30} fontSize="14" fontWeight="bold" fill="#0f172a">{p.score}</text>
+              <text x={ttX + 40} y={ttY + 30} dominantBaseline="auto" fontSize="9" fill={delta >= 0 ? "#10b981" : "#ef4444"}>  {delta >= 0 ? `+${delta}` : String(delta)} pts</text>
+              {/* headline snippet — single line */}
+              <text x={ttX + 10} y={ttY + 47} fontSize="8.5" fill="#475569">{tr(item.headline, 36)}</text>
+              {/* click hint */}
+              <text x={ttX + ttW / 2} y={ttY + 62} textAnchor="middle" fontSize="7.5" fill="#94a3b8" fontStyle="italic">click for full details</text>
+            </g>
+          );
+        })()}
+
+        {pts.map((p, i) => {
+          const step = Math.max(1, Math.floor(allData.length / 6));
+          if (i % step !== 0 && i !== allData.length - 1 && i !== hl - 1) return null;
+          return <text key={i} x={p.x} y={VH - 2} textAnchor="middle" fontSize="8" fill="#94a3b8">{p.label}</text>;
+        })}
+
+        <text x={pts[pts.length - 1].x + 8} y={pts[pts.length - 1].y} dominantBaseline="middle" fontSize="10" fontWeight="bold" fill="#334155">{pts[pts.length - 1].score}</text>
+      </svg>
+
+      {/* Expanded detail card — shown on click */}
+      {clickedItem && clickedDelta !== null && clickedScore !== null && (() => {
+        const vs = verdictStyle[clickedItem.verdict];
+        return (
+          <div className={`mt-3 rounded-xl border ${vs.border} ${vs.bg} p-4 animate-content-fade`}>
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold ${vs.badge}`}>{vs.label}</span>
+                <span className="text-[10px] text-slate-400">{clickedItem.date} · {clickedItem.source}</span>
+              </div>
+              <div className="flex shrink-0 items-center gap-3">
+                <span className="text-xs font-black text-slate-800">{clickedScore} <span className={`text-[11px] font-semibold ${clickedDelta >= 0 ? "text-emerald-600" : "text-red-500"}`}>{clickedDelta >= 0 ? `+${clickedDelta}` : String(clickedDelta)} pts</span></span>
+                <button type="button" onClick={() => setClicked(null)} className="rounded-md p-1 text-slate-400 hover:bg-white hover:text-slate-600"><X className="h-3.5 w-3.5" /></button>
+              </div>
+            </div>
+            <p className="mt-2.5 text-sm font-semibold leading-snug text-slate-800">{clickedItem.headline}</p>
+            <div className="mt-2 flex items-center gap-1.5">
+              <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">vs goal</span>
+              <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-semibold text-slate-600">{clickedItem.relatedGoal}</span>
+            </div>
+            <p className="mt-2.5 text-[11px] leading-relaxed text-slate-600">{clickedItem.analysis}</p>
+          </div>
+        );
+      })()}
+    </div>
+  );
+}
+
 /* ── Detail panel ───────────────────────────────────────────────── */
 function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
   const [ready, setReady] = useState(false);
@@ -353,7 +524,10 @@ function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
           ))}
         </div>
 
-        {/* ── 3. Three-column section ────────────────── */}
+        {/* ── 3. ESG Rating Impact Chart ────────────── */}
+        <ESGRatingChart ext={ext} />
+
+        {/* ── 4. Three-column section ────────────────── */}
         <div className="grid gap-4 lg:grid-cols-3">
 
           {/* ESG Score Breakdown */}
@@ -413,7 +587,7 @@ function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
           </div>
         </div>
 
-        {/* ── 4. CSR Rating & Framework Tabs ───────── */}
+        {/* ── 5. CSR Rating & Framework Tabs ───────── */}
         <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
           <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-slate-400">CSR Rating &amp; Reporting Frameworks</p>
           <div className="no-scrollbar flex items-center gap-2 overflow-x-auto">
@@ -538,7 +712,54 @@ function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
           )}
         </div>
 
-        {/* ── 7. Download Reports ───────────────────── */}
+        {/* ── 7. Weekly ESG Watch ──────────────────── */}
+        {ext?.weeklyWatch && (() => {
+          const { weekOf, items } = ext.weeklyWatch!;
+          const verdictStyle = {
+            genuine:      { badge: "bg-emerald-100 text-emerald-700 border-emerald-200", dot: "bg-emerald-500", bar: "border-emerald-200 bg-emerald-50/40", label: "Genuine" },
+            greenwashing: { badge: "bg-red-100 text-red-700 border-red-200",             dot: "bg-red-500",     bar: "border-red-200 bg-red-50/40",         label: "Greenwashing" },
+            questionable: { badge: "bg-amber-100 text-amber-700 border-amber-200",       dot: "bg-amber-400",   bar: "border-amber-200 bg-amber-50/40",     label: "Questionable" },
+          };
+          const counts = { genuine: 0, greenwashing: 0, questionable: 0 };
+          items.forEach(it => counts[it.verdict]++);
+          return (
+            <div>
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">📰 Weekly ESG Watch</p>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-slate-400">Week of {weekOf}</span>
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">{counts.genuine} genuine</span>
+                  <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-700">{counts.questionable} questionable</span>
+                  {counts.greenwashing > 0 && <span className="rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-[10px] font-semibold text-red-700">{counts.greenwashing} greenwashing</span>}
+                </div>
+              </div>
+              <div className="space-y-3">
+                {items.map((item, i) => {
+                  const s = verdictStyle[item.verdict];
+                  return (
+                    <div key={i} className={`rounded-xl border p-4 ${s.bar}`}>
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className={`h-2 w-2 shrink-0 rounded-full ${s.dot}`} />
+                          <span className="text-[10px] font-semibold text-slate-400">{item.date} · {item.source}</span>
+                        </div>
+                        <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-bold ${s.badge}`}>{s.label}</span>
+                      </div>
+                      <p className="mt-2 text-xs font-semibold leading-snug text-slate-800">{item.headline}</p>
+                      <div className="mt-2 flex items-center gap-1.5">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">vs goal</span>
+                        <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600">{item.relatedGoal}</span>
+                      </div>
+                      <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{item.analysis}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* ── 8. Download Reports ───────────────────── */}
         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
           <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-slate-400">Download Reports</p>
           <div className="flex flex-wrap gap-3">
