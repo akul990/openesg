@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const lvmh: CompanyData = {
+  name: "LVMH Moët Hennessy",
+  ticker: "MC",
+  sector: "Consumer Discretionary",
+  country: "France",
+  score: 64,
+  e: 61,
+  s: 65,
+  g: 68,
+  csr: "B",
+  frameworks: ["GRI", "TCFD", "CSRD", "SASB", "UNGC"],
+  frameworkRatings: { GRI: "B", TCFD: "B-", CSRD: "B", SASB: "B-", UNGC: "B" },
+  hq: "Paris, France",
+  employees: "213,000",
+  revenue: "€84.7B",
+  tags: ["Luxury Goods", "Fashion", "LIFE 360", "Artisan Craftsmanship"],
+  badge: { label: "LIFE 360 Programme", icon: "💎", color: "from-slate-800 to-amber-700" },
+  about:
+    "LVMH is the world's largest luxury goods conglomerate with 75 prestigious Maisons across fashion, wines, jewellery, perfumes, and retail. Its LIFE 360 (LVMH Initiatives For the Environment) programme sets binding 2030 targets across biodiversity, climate, circular design, and traceability. LVMH's ESG challenge is unique: luxury's core proposition — rarity, craftsmanship, heritage — must be reconciled with the climate and social footprint of global sourcing, air freight, and high-consumption marketing.",
+  extended: {
+    emissions: {
+      value: "5.8M tCO₂e",
+      trend: "−22% vs 2019",
+      trendDir: "down",
+      goal: "Carbon Neutral (Scope 1&2) by 2026",
+      goalDetail: "Net Zero across full value chain by 2050 · SBTI validated 1.5°C",
+    },
+    progressMetrics: [
+      { label: "Scope 1&2 Emissions Reduction",       pct: 56, detail: "56% Scope 1&2 reduction vs 2019 · Carbon neutral operations by 2026" },
+      { label: "Renewable Energy (Maisons)",          pct: 65, detail: "65% of Maisons using renewable electricity · 100% target by 2026" },
+      { label: "Eco-Designed Products (LIFE 360)",   pct: 42, detail: "42% of new products meet LIFE 360 eco-design criteria · 100% target by 2030" },
+    ],
+    emissionsBreakdown: [
+      { label: "Supply Chain & Materials",  pct: 61, value: "3.5M tCO₂e", color: "#b45309" },
+      { label: "Customer Transport & Air",  pct: 18, value: "1.0M tCO₂e", color: "#d97706" },
+      { label: "Manufacturing Operations",  pct: 12, value: "0.7M tCO₂e", color: "#f59e0b" },
+      { label: "Retail & Hospitality",      pct: 9,  value: "0.5M tCO₂e", color: "#fbbf24" },
+    ],
+    highlights: [
+      { value: "−56%", label: "Scope 1&2 reduction since 2019",     icon: "📉" },
+      { value: "65%",  label: "Maisons on renewable electricity",    icon: "⚡" },
+      { value: "42%",  label: "Products meeting eco-design criteria", icon: "✅" },
+      { value: "75",   label: "Prestigious Maisons in portfolio",    icon: "💎" },
+      { value: "2026", label: "Scope 1&2 carbon neutrality target",  icon: "🎯" },
+    ],
+    risks: [
+      { label: "Air Freight & Luxury Travel Emissions", detail: "Premium shipping and VIP client air travel (Scope 3) are structurally high-carbon and difficult to change without damaging brand experience.", dot: "bg-amber-400" },
+      { label: "Supply Chain Traceability",             detail: "Leather, cotton, and exotic skins sourcing faces increasing scrutiny over biodiversity impact and supplier labour standards.", dot: "bg-amber-400" },
+      { label: "Strong LIFE 360 Governance",            detail: "LIFE 360 targets are Board-level commitments with KPMG assurance, annual public progress reporting, and executive incentive linkage.", dot: "bg-emerald-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 61.0 },
+        { label: "Jan '26", score: 61.5 },
+        { label: "Feb '26", score: 62.0 },
+        { label: "Mar '26", score: 62.8 },
+        { label: "Apr W1",  score: 63.2 },
+        { label: "Apr W2",  score: 63.7 },
+        { label: "Apr W3",  score: 64.0 },
+      ],
+      weeklyDeltas: [0.4, -0.3, 0.8, -0.2, 0.5],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Louis Vuitton Atelier achieves carbon neutral certification across all French workshops",
+          source: "Bureau Veritas / LVMH LIFE 360",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2026",
+          analysis: "Bureau Veritas independently verified carbon neutrality across Louis Vuitton's 17 French ateliers, covering Scope 1 and 2 emissions through a combination of on-site solar, green electricity PPAs, and high-quality REDD+ offsets with 30-year contractual permanence. This is a credible mid-way milestone towards the 2026 Maison-wide target.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "LVMH's Loro Piana faces supply chain investigation over vicuña fibre sourcing in Peru",
+          source: "Le Monde / Reuters",
+          verdict: "questionable",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2026",
+          analysis: "An investigation alleges that Loro Piana's vicuña fibre supply chain involves communities not receiving fair benefit-sharing as required under the Convention on Biological Diversity. LVMH has contested the findings, but the opacity of exotic material sourcing across its Maisons remains a systemic vulnerability.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "Dior and Bulgari achieve 100% renewable electricity across retail networks in Europe and Japan",
+          source: "LVMH Environment Report",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2026",
+          analysis: "Retail electricity is a controllable and verifiable metric. The achievement of 100% renewables across 1,200+ combined boutiques is meaningful and third-party verified through Guarantees of Origin (GOs) in Europe and J-Credit certificates in Japan. This advances the 2026 Scope 2 neutrality target credibly.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "LVMH raises €2B green bond for sustainable luxury infrastructure — oversubscribed 4×",
+          source: "LVMH Investor Relations / FT",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2026",
+          analysis: "The €2B green bond is the largest by a luxury company and was 4× oversubscribed. Proceeds are specifically earmarked for eco-designed atelier construction, renewable energy PPAs, and biodiversity protection projects. The framework was verified by ISS ESG as fully ICMA Green Bond Principles compliant.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "LVMH's LIFE 360 biodiversity targets — only 42% of products meet eco-design criteria by mid-2026",
+          source: "LVMH Investor Day / Sustainability Team",
+          verdict: "questionable",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2026",
+          analysis: "LVMH's 100% eco-design target by 2030 looks increasingly difficult with 42% coverage at mid-point. The challenge is that luxury product design cycles are long (3–5 years) and many heritage products cannot be reformulated without brand damage. The trajectory suggests the 2030 target requires a significant acceleration.",
+        },
+      ],
+    },
+  },
+};
+
+export default lvmh;

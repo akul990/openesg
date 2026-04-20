@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const nestle: CompanyData = {
+  name: "Nestlé S.A.",
+  ticker: "NESN",
+  sector: "Consumer Staples",
+  country: "Switzerland",
+  score: 58,
+  e: 55,
+  s: 56,
+  g: 66,
+  csr: "B-",
+  frameworks: ["GRI", "TCFD", "SASB", "UNGC", "UNSDG"],
+  frameworkRatings: { GRI: "B-", TCFD: "B-", SASB: "C+", UNGC: "B-", UNSDG: "B-" },
+  hq: "Vevey, Switzerland",
+  employees: "272,000",
+  revenue: "CHF 91.4B",
+  tags: ["Food & Beverage", "Water Stewardship", "Packaging", "Regenerative Agriculture"],
+  badge: { label: "Net Zero Roadmap 2050", icon: "🌿", color: "from-green-800 to-yellow-600" },
+  about:
+    "Nestlé is the world's largest food and beverage company with 2,000+ brands across 186 countries. Its ESG profile is a study in contrasts: genuine leadership in water stewardship and regenerative agriculture alongside serious criticisms over plastic packaging, infant formula marketing, and bottled water extraction during droughts. The company has faced sustained controversy over its 'Creating Shared Value' framework, which critics argue masks systemic social and environmental impacts.",
+  extended: {
+    emissions: {
+      value: "92.8M tCO₂e",
+      trend: "−13.5% vs 2018",
+      trendDir: "down",
+      goal: "Net Zero by 2050",
+      goalDetail: "50% absolute reduction by 2030 · Halve food-system emissions in supply chain",
+    },
+    progressMetrics: [
+      { label: "Absolute GHG Reduction (vs 2018)", pct: 13, detail: "13.5% reduction vs 2018 · 50% target by 2030 — significantly behind schedule" },
+      { label: "Recyclable/Reusable Packaging",    pct: 88, detail: "88% recyclable or reusable packaging · 100% target by 2025 (delayed)" },
+      { label: "Regenerative Agriculture Coverage", pct: 15, detail: "15% of key ingredients from regenerative agriculture · 50% target by 2030" },
+    ],
+    emissionsBreakdown: [
+      { label: "Agriculture & Land Use",  pct: 64, value: "59.4M tCO₂e", color: "#65a30d" },
+      { label: "Manufacturing",           pct: 11, value: "10.2M tCO₂e", color: "#84cc16" },
+      { label: "Packaging",               pct: 12, value: "11.1M tCO₂e", color: "#a3e635" },
+      { label: "Logistics & Transport",   pct: 13, value: "12.1M tCO₂e", color: "#bef264" },
+    ],
+    highlights: [
+      { value: "88%",    label: "Recyclable or reusable packaging",   icon: "♻️" },
+      { value: "CHF 1B", label: "Investment in regenerative agri.",    icon: "🌾" },
+      { value: "13.5%",  label: "GHG reduction since 2018",           icon: "📉" },
+      { value: "186",    label: "Countries with water stewardship",    icon: "💧" },
+      { value: "2050",   label: "Net-zero target year",                icon: "🎯" },
+    ],
+    risks: [
+      { label: "GHG Reduction Pace vs. Target",  detail: "Only 13.5% reduction vs 50% target by 2030 — the trajectory requires 5× current annual reduction rate.", dot: "bg-red-400" },
+      { label: "Water Extraction Controversies", detail: "Nestlé's bottled water operations in drought-affected regions (US West, EU) remain a major social and reputational risk.", dot: "bg-red-400" },
+      { label: "Infant Formula Marketing",       detail: "Ongoing WHO code violations on breast milk substitute marketing documented in 7 countries in 2023-24 cycle.", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 55.0 },
+        { label: "Jan '26", score: 55.5 },
+        { label: "Feb '26", score: 56.0 },
+        { label: "Mar '26", score: 56.5 },
+        { label: "Apr W1",  score: 57.0 },
+        { label: "Apr W2",  score: 57.5 },
+        { label: "Apr W3",  score: 58.0 },
+      ],
+      weeklyDeltas: [-0.6, 0.4, -0.8, 0.5, 0.2],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Nestlé misses 2025 packaging recyclability target — pushes deadline to 2027",
+          source: "Nestlé Annual Sustainability Report",
+          verdict: "questionable",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Nestlé's 100% recyclable packaging target for 2025 has been moved to 2027 — the second deadline extension in three years. The company cites technical challenges with flexible plastic films, but the consistent target-shifting undermines the credibility of its broader 2030 and 2050 commitments.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "Nestlé invests CHF 500M in regenerative agriculture programme for cocoa and dairy supply chains",
+          source: "Nestlé Press Release",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The regenerative agriculture investment is backed by independently monitored farmer transition agreements covering 50,000 farms. Soil carbon sequestration is third-party verified under the Verra standard. Agriculture accounts for 64% of Nestlé's emissions, making this investment proportionate to the challenge.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "WHO audit finds Nestlé continues to violate infant formula marketing code in 5 countries",
+          source: "WHO / IBFAN Monitoring Report",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The 2024 IBFAN monitoring report documents 68 specific violations of the International Code of Marketing of Breast-milk Substitutes by Nestlé subsidiaries. This is a recurring social governance failure that occurs despite public commitments to Code compliance since 2018 — suggesting systematic, not isolated, non-compliance.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "California court allows class action over Nestlé's misleading 'sustainably sourced' cocoa label",
+          source: "Reuters / California Superior Court",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The court's decision to certify the class action on deceptive sustainability labelling creates material legal and financial risk. Child labour in cocoa supply chains has been documented by Nestlé's own internal audits, yet the company continues to use sustainability-linked premium marketing.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "Nestlé water stewardship programme certified in 100% of high-risk water sites",
+          source: "Alliance for Water Stewardship",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "AWS certification at all 21 high-risk water extraction sites is a credible verification, as AWS uses independently assessed site-level water balance data. This is a material positive given the scale of Nestlé's water operations and the historical controversies around extraction in stressed watersheds.",
+        },
+      ],
+    },
+  },
+};
+
+export default nestle;

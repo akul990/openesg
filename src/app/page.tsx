@@ -1,4 +1,16 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/src/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "OpenESG — Free ESG Compliance & Sustainability Ratings Platform",
+  description:
+    "Automate ESG compliance and get free company sustainability ratings. Map your disclosures to CSRD, GRI, TCFD, SASB, and ISSB without paying Big 4 consulting rates. Start free in under an hour.",
+  openGraph: {
+    title: "OpenESG — ESG Compliance Automation & Free Sustainability Ratings",
+    description:
+      "Stop paying for ESG consultants. OpenESG automates compliance for CSRD, GRI, TCFD, SASB, and ISSB — in under an hour.",
+  },
+};
 import { Hero } from "@/src/components/Hero";
 import { LogoStrip } from "@/src/components/LogoStrip";
 import { HowItWorks } from "@/src/components/HowItWorks";

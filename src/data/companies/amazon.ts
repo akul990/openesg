@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const amazon: CompanyData = {
+  name: "Amazon.com Inc.",
+  ticker: "AMZN",
+  sector: "Technology",
+  country: "USA",
+  score: 54,
+  e: 52,
+  s: 48,
+  g: 65,
+  csr: "C+",
+  frameworks: ["GRI", "TCFD", "SASB", "UNSDG"],
+  frameworkRatings: { GRI: "C+", TCFD: "C", SASB: "C+", UNSDG: "B-" },
+  hq: "Seattle, USA",
+  employees: "1,525,000",
+  revenue: "$574.8B",
+  tags: ["E-Commerce", "Cloud Computing", "Logistics", "Climate Pledge"],
+  badge: { label: "The Climate Pledge", icon: "🌱", color: "from-slate-700 to-teal-600" },
+  about:
+    "Amazon is the world's largest e-commerce and cloud computing company with AWS generating over 60% of operating income. Amazon co-founded The Climate Pledge in 2019, committing to net-zero carbon by 2040. However, its massive logistics network, packaging waste, and labor practices remain under intense scrutiny from regulators and investors.",
+  extended: {
+    emissions: {
+      value: "71.54M tCO₂e",
+      trend: "+18% vs 2019",
+      trendDir: "up",
+      goal: "Net Zero by 2040",
+      goalDetail: "50% reduction by 2030 + carbon removal portfolio",
+    },
+    progressMetrics: [
+      { label: "Renewable Energy (Operations)", pct: 90, detail: "90% renewable electricity across global operations · 100% target by 2025" },
+      { label: "Electric Delivery Vehicles",    pct: 17, detail: "20,000 of 100,000 Rivian electric vans deployed · Full fleet by 2030" },
+      { label: "Shipment Zero Progress",        pct: 37, detail: "37% of all shipments net-zero carbon · 50% target by 2030" },
+    ],
+    emissionsBreakdown: [
+      { label: "Logistics & Transport", pct: 44, value: "31.5M tCO₂e", color: "#ef4444" },
+      { label: "AWS Data Centers",      pct: 22, value: "15.7M tCO₂e", color: "#f97316" },
+      { label: "Supplier Chain",        pct: 24, value: "17.2M tCO₂e", color: "#f59e0b" },
+      { label: "Corporate Operations",  pct: 10, value: "7.2M tCO₂e",  color: "#84cc16" },
+    ],
+    highlights: [
+      { value: "100K",  label: "Rivian EVs ordered by 2030",      icon: "⚡" },
+      { value: "$2B",   label: "Climate Pledge Fund committed",    icon: "🌱" },
+      { value: "90%",   label: "Renewable energy in operations",   icon: "☀️" },
+      { value: "310+",  label: "Companies joined The Climate Pledge", icon: "🤝" },
+      { value: "2040",  label: "Net-zero target year",             icon: "🎯" },
+    ],
+    risks: [
+      { label: "Rising Scope 3 Emissions",    detail: "Total emissions grew 18% since 2019 despite pledges — logistics growth outpacing efficiency gains.", dot: "bg-red-400" },
+      { label: "Labor & Warehouse Safety",    detail: "Injury rates at Amazon warehouses consistently above industry average; subject to ongoing OSHA investigations.", dot: "bg-red-400" },
+      { label: "Packaging & Plastic Waste",   detail: "Single-use plastic packaging remains a major environmental issue; targets are set but progress is opaque.", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 51.0 },
+        { label: "Jan '26", score: 51.5 },
+        { label: "Feb '26", score: 52.0 },
+        { label: "Mar '26", score: 52.8 },
+        { label: "Apr W1",  score: 53.2 },
+        { label: "Apr W2",  score: 53.6 },
+        { label: "Apr W3",  score: 54.0 },
+      ],
+      weeklyDeltas: [-1.2, 0.6, 0.4, -0.5, 0.3],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Amazon warehouse injury rates remain 2× industry average in annual safety report",
+          source: "OSHA / Strategic Organizing Center",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2040",
+          analysis: "Despite public commitments to worker safety, Amazon's 2025 injury rate data shows recordable incident rates at 6.8 per 100 workers — more than double the industry median. This contradicts Amazon's social responsibility marketing and raises material questions about the 'S' pillar of ESG reporting.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "AWS reaches 90% renewable electricity milestone across all global data centres",
+          source: "Amazon Sustainability Report",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2040",
+          analysis: "The 90% renewable electricity milestone for AWS is verified by third-party energy attribute certificates (EACs) and corresponds to 24 GW of new renewable capacity contracted since 2015. This is a credible and material environmental achievement for the world's largest cloud provider.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "Amazon's total carbon footprint rises 18% since signing The Climate Pledge in 2019",
+          source: "Carbon Disclosure Project / BloombergNEF",
+          verdict: "questionable",
+          relatedGoal: "Net Zero by 2040",
+          analysis: "Amazon's absolute emissions have grown substantially since it co-founded The Climate Pledge. The company argues growth-adjusted intensity is improving, but absolute emissions are the relevant metric for climate impact. The pledge's credibility depends on reversing this trend before 2030.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "20,000 Rivian electric delivery vans now deployed in US, ahead of initial schedule",
+          source: "Amazon Devices & Services",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2040",
+          analysis: "The Rivian EV deployment is on track and represents real displaced diesel miles. Each van displaces approximately 35 tCO₂e per year vs a diesel equivalent. The full 100,000-van fleet will represent a material reduction in last-mile logistics emissions — Amazon's single largest controllable emissions category.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "EU regulators open probe into Amazon Marketplace seller ESG compliance claims",
+          source: "European Commission / Reuters",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2040",
+          analysis: "The EU investigation targets Amazon's 'sustainable products' labelling on its marketplace, where third-party sellers make unverified environmental claims. This mirrors the EU's broader crackdown on green labelling and could result in mandatory verification requirements that are difficult to scale at Amazon's size.",
+        },
+      ],
+    },
+  },
+};
+
+export default amazon;

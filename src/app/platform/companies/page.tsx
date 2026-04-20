@@ -3,8 +3,9 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
-import { Search, TrendingUp, TrendingDown, Minus, ChevronLeft, X, Building2, Users, DollarSign, ChevronDown, Check, Download, FileText, BarChart2 } from "lucide-react";
+import { Search, TrendingUp, TrendingDown, Minus, ChevronLeft, X, Building2, Users, DollarSign, ChevronDown, Check, Download, FileText, BarChart2, Sparkles, RefreshCw, AlertTriangle } from "lucide-react";
 import { companies, EXTENDED, type CompanyData, type ExtData } from "@/src/data/companies";
+import type { ESGEngineOutput } from "@/src/lib/esg-engine/types";
 
 /* ── Animated dropdown ──────────────────────────────────────────── */
 function Dropdown({ value, onChange, options, placeholder }: {
@@ -545,11 +546,224 @@ function ESGRatingChart({ ext }: { ext: ExtData | undefined }) {
   );
 }
 
+/* ── AI Intelligence Panel ──────────────────────────────────────── */
+const CAT_CLS: Record<string, string> = {
+  E: "bg-emerald-100 text-emerald-700",
+  S: "bg-sky-100 text-sky-700",
+  G: "bg-violet-100 text-violet-700",
+};
+const SEV_CLS: Record<string, string> = {
+  Low:    "bg-slate-100 text-slate-600",
+  Medium: "bg-amber-100 text-amber-700",
+  High:   "bg-red-100 text-red-700",
+};
+const CONF_CLS: Record<string, string> = {
+  Low:    "bg-slate-100 text-slate-600",
+  Medium: "bg-amber-100 text-amber-700",
+  High:   "bg-red-100 text-red-700",
+};
+
+function AIIntelligencePanel({
+  co,
+  aiData,
+  aiLoading,
+  aiError,
+  onRefresh,
+}: {
+  co: Company;
+  aiData: ESGEngineOutput | null;
+  aiLoading: boolean;
+  aiError: string | null;
+  onRefresh: () => void;
+}) {
+  if (aiLoading) {
+    return (
+      <div className="flex items-center justify-center gap-3 rounded-xl border border-primary/20 bg-primary/5 px-5 py-4">
+        <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+        <p className="text-[12px] font-semibold text-primary">AI intelligence engine running for {co.name}…</p>
+      </div>
+    );
+  }
+
+  if (aiError) {
+    return (
+      <div className="flex items-center justify-between rounded-xl border border-red-200 bg-red-50 px-4 py-3">
+        <div className="flex items-center gap-2">
+          <AlertTriangle className="h-4 w-4 text-red-500" />
+          <p className="text-[12px] font-semibold text-red-700">{aiError}</p>
+        </div>
+        <button type="button" onClick={onRefresh} className="text-[11px] font-semibold text-red-600 underline hover:text-red-800">Retry</button>
+      </div>
+    );
+  }
+
+  if (!aiData) {
+    return (
+      <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+            <Sparkles className="h-4 w-4 text-primary" />
+          </div>
+          <div>
+            <p className="text-[12px] font-bold text-slate-800">AI Intelligence Refresh</p>
+            <p className="text-[11px] text-slate-400">Live ESG analysis · news monitoring · greenwashing detection</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={onRefresh}
+          className="flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-[11px] font-bold text-white shadow-sm transition-all hover:bg-primary/90 hover:shadow-md"
+        >
+          <Sparkles className="h-3 w-3" /> Run Analysis
+        </button>
+      </div>
+    );
+  }
+
+  const confBorder =
+    aiData.confidence_score >= 70 ? "border-emerald-200 bg-emerald-50"
+    : aiData.confidence_score >= 40 ? "border-amber-200 bg-amber-50"
+    : "border-red-200 bg-red-50";
+  const confText =
+    aiData.confidence_score >= 70 ? "text-emerald-700"
+    : aiData.confidence_score >= 40 ? "text-amber-700"
+    : "text-red-600";
+
+  return (
+    <div className="space-y-4 rounded-xl border border-primary/20 bg-white p-4 shadow-sm">
+      {/* Header row */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-4 w-4 text-primary" />
+          <p className="text-[11px] font-bold uppercase tracking-widest text-primary">AI Intelligence</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-bold ${confBorder} ${confText}`}>
+            Confidence {aiData.confidence_score}%
+          </span>
+          <button
+            type="button"
+            onClick={onRefresh}
+            title="Re-run analysis"
+            className="rounded-full p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-primary"
+          >
+            <RefreshCw className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Updated scores */}
+      <div>
+        <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">Updated ESG Scores</p>
+        <div className="grid grid-cols-4 gap-2">
+          {[
+            { label: "Overall", val: aiData.esg_scores.overall_score,       base: co.score },
+            { label: "E",       val: aiData.esg_scores.environmental_score,  base: co.e },
+            { label: "S",       val: aiData.esg_scores.social_score,         base: co.s },
+            { label: "G",       val: aiData.esg_scores.governance_score,     base: co.g },
+          ].map(({ label, val, base }) => {
+            const delta = val - base;
+            return (
+              <div key={label} className="rounded-lg bg-slate-50 px-2 py-2.5 text-center">
+                <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">{label}</p>
+                <p className="mt-0.5 text-sm font-black text-slate-900">{val}</p>
+                {delta !== 0 && (
+                  <p className={`text-[10px] font-semibold ${delta > 0 ? "text-emerald-600" : "text-red-500"}`}>
+                    {delta > 0 ? `+${delta}` : delta}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{aiData.esg_scores.score_rationale}</p>
+      </div>
+
+      {/* News events */}
+      {aiData.news_events.length > 0 && (
+        <div>
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">News Events Detected</p>
+          <div className="space-y-2">
+            {aiData.news_events.map((ev, i) => (
+              <div key={i} className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${CAT_CLS[ev.category] ?? "bg-slate-100 text-slate-600"}`}>{ev.category}</span>
+                  <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${SEV_CLS[ev.severity] ?? "bg-slate-100 text-slate-600"}`}>{ev.severity}</span>
+                  {ev.impact_score !== null && <span className="text-[10px] text-slate-400">Impact {ev.impact_score}/100</span>}
+                  {ev.date && <span className="ml-auto text-[10px] text-slate-400">{ev.date}</span>}
+                </div>
+                <p className="mt-1.5 text-[11px] font-semibold leading-snug text-slate-700">{ev.title}</p>
+                {ev.source && <p className="mt-0.5 text-[10px] text-slate-400">{ev.source}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Greenwashing flags */}
+      {aiData.greenwashing_flags.length > 0 && (
+        <div>
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">Greenwashing Flags</p>
+          <div className="space-y-2">
+            {aiData.greenwashing_flags.map((flag, i) => (
+              <div key={i} className="rounded-lg border border-amber-200 bg-amber-50/60 p-3">
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-amber-600" />
+                  <p className="text-[11px] font-semibold text-amber-900">{flag.issue}</p>
+                  <span className={`ml-auto rounded-full px-2 py-0.5 text-[9px] font-bold ${CONF_CLS[flag.confidence] ?? ""}`}>{flag.confidence}</span>
+                </div>
+                <p className="mt-1 pl-5 text-[11px] leading-relaxed text-amber-800">{flag.reason}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Changes detected */}
+      {aiData.changes_detected.length > 0 && (
+        <div>
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">Changes Detected</p>
+          <div className="space-y-1">
+            {aiData.changes_detected.map((ch, i) => (
+              <div key={i} className="flex items-center gap-2 rounded-lg bg-slate-50 px-3 py-2 text-[11px]">
+                <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${
+                  ch.change_type === "increase" ? "bg-emerald-500"
+                  : ch.change_type === "decrease" ? "bg-red-400"
+                  : ch.change_type === "new" ? "bg-sky-400"
+                  : "bg-slate-300"
+                }`} />
+                <span className="font-semibold text-slate-700">{ch.field}</span>
+                <span className="text-slate-400">{String(ch.old_value ?? "—")}</span>
+                <span className="text-slate-300">→</span>
+                <span className={`font-semibold ${
+                  ch.change_type === "increase" ? "text-emerald-700"
+                  : ch.change_type === "decrease" ? "text-red-600"
+                  : "text-slate-700"
+                }`}>{String(ch.new_value ?? "—")}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Metadata */}
+      <p className="text-[10px] text-slate-400">
+        Sources: {aiData.metadata.sources.slice(0, 4).join(" · ")}
+        {aiData.metadata.sources.length > 4 && ` +${aiData.metadata.sources.length - 4} more`}
+        {" · "}Updated {aiData.metadata.last_updated}
+      </p>
+    </div>
+  );
+}
+
 /* ── Detail panel ───────────────────────────────────────────────── */
 function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
   const [ready, setReady] = useState(false);
   const [activeFW, setActiveFW] = useState<string | null>(null);
   const [activeDisc, setActiveDisc] = useState<number | null>(null);
+  const [aiData, setAiData] = useState<ESGEngineOutput | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
   const circumference = 2 * Math.PI * 52;
   const notes = generateNotes(co);
   const ext = EXTENDED[co.ticker];
@@ -562,7 +776,33 @@ function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
     return () => clearTimeout(t);
   }, [co.ticker]);
 
+  useEffect(() => { setAiData(null); setAiError(null); }, [co.ticker]);
   useEffect(() => { setActiveDisc(null); }, [activeFW]);
+
+  async function handleAIRefresh() {
+    setAiLoading(true);
+    setAiError(null);
+    try {
+      const res = await fetch("/api/esg-engine", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          company_name: co.name,
+          ticker: co.ticker,
+          existing_data: { ...co, extended: EXTENDED[co.ticker] },
+        }),
+      });
+      if (!res.ok) {
+        const payload = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(payload.error ?? `Server error ${res.status}`);
+      }
+      setAiData(await res.json() as ESGEngineOutput);
+    } catch (e) {
+      setAiError(e instanceof Error ? e.message : "Analysis failed. Please try again.");
+    } finally {
+      setAiLoading(false);
+    }
+  }
 
   const sentimentLabel = co.score >= 75 ? { text: "↑ Improving", cls: "bg-emerald-100 text-emerald-700" } : co.score >= 55 ? { text: "→ Stable", cls: "bg-amber-100 text-amber-700" } : { text: "↓ Under Review", cls: "bg-red-100 text-red-700" };
 
@@ -612,6 +852,15 @@ function DetailPanel({ co, onClose }: { co: Company; onClose?: () => void }) {
             </div>
           ))}
         </div>
+
+        {/* ── AI Intelligence ───────────────────────── */}
+        <AIIntelligencePanel
+          co={co}
+          aiData={aiData}
+          aiLoading={aiLoading}
+          aiError={aiError}
+          onRefresh={handleAIRefresh}
+        />
 
         {/* ── 3. Greenwashing Risk Meter ────────────── */}
         <GreenwashingRiskMeter co={co} ext={ext} />

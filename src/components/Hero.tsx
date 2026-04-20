@@ -83,13 +83,13 @@ export function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/90 backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Built for companies that compliance tools forgot
+            Free ESG compliance &amp; sustainability ratings platform
           </div>
           <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            ESG Compliance,<br className="hidden sm:block" /> Automated.
+            ESG Compliance &amp; Ratings,<br className="hidden sm:block" /> Automated.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg text-white/75 sm:text-xl">
-            Stop paying Big 4 rates for ESG reports. OpenESG automatically maps your data to CSRD, GRI, TCFD, SASB, and ISSB — so any company can meet investor and regulatory requirements without a dedicated compliance team.
+            Stop paying Big 4 rates for ESG reports. OpenESG automatically maps your sustainability data to CSRD, GRI, TCFD, SASB, and ISSB — so any company can achieve ESG compliance and investor-grade ratings without a dedicated sustainability team.
           </p>
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <button
@@ -110,9 +110,9 @@ export function Hero() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           {[
-            "90% cheaper than consultants",
-            "Setup in under an hour",
-            "15+ frameworks auto-mapped",
+            "Free ESG score in minutes",
+            "CSRD · GRI · TCFD · SASB · ISSB auto-mapped",
+            "90% cheaper than Big 4 consultants",
           ].map((label) => (
             <span
               key={label}

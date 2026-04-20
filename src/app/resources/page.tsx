@@ -1,20 +1,23 @@
 import {
   BookOpen, FileText, Video, Code2, Mail, ArrowRight,
-  Globe, Layers, BarChart2, ShieldAlert,
+  Globe, Layers, BarChart2, ShieldAlert, Newspaper,
 } from "lucide-react";
+import Link from "next/link";
 import bgImage from "@/src/assets/bg-1.webp";
 import { Navbar } from "@/src/components/Navbar";
 import { Footer } from "@/src/components/Footer";
 import { PageHero } from "@/src/components/PageHero";
+import { blogPosts } from "@/src/lib/resources/blog-data";
 
 export const metadata = {
-  title: "Resources — openESG",
+  title: "ESG Resources — Free Guides, Framework Library & Sustainability Glossary",
   description:
-    "Guides, framework explainers, a glossary, webinars, and API docs — everything you need to master ESG analysis.",
+    "Free ESG guides, framework explainers for GRI, CSRD, TCFD, SASB, ISSB, SFDR, and EU Taxonomy, a practitioner glossary, and expert research. Everything you need to master ESG analysis and sustainability reporting.",
 };
 
 const guides = [
   {
+    slug: "getting-started-esg-investing",
     tag: "Beginner Guide",
     tagColor: "bg-emerald-100 text-emerald-700",
     icon: BookOpen,
@@ -23,6 +26,7 @@ const guides = [
     readTime: "12 min read",
   },
   {
+    slug: "navigating-csrd",
     tag: "Regulatory",
     tagColor: "bg-sky-100 text-sky-700",
     icon: FileText,
@@ -31,6 +35,7 @@ const guides = [
     readTime: "18 min read",
   },
   {
+    slug: "gri-vs-sasb-vs-issb",
     tag: "Framework Comparison",
     tagColor: "bg-violet-100 text-violet-700",
     icon: Layers,
@@ -39,6 +44,7 @@ const guides = [
     readTime: "15 min read",
   },
   {
+    slug: "identifying-greenwashing",
     tag: "Due Diligence",
     tagColor: "bg-amber-100 text-amber-700",
     icon: ShieldAlert,
@@ -47,6 +53,7 @@ const guides = [
     readTime: "10 min read",
   },
   {
+    slug: "sfdr-pai-reporting",
     tag: "Portfolio",
     tagColor: "bg-teal-100 text-teal-700",
     icon: BarChart2,
@@ -55,6 +62,7 @@ const guides = [
     readTime: "20 min read",
   },
   {
+    slug: "esg-data-quant-models",
     tag: "Data & API",
     tagColor: "bg-teal-100 text-teal-700",
     icon: Code2,
@@ -65,16 +73,16 @@ const guides = [
 ];
 
 const frameworkCards = [
-  { acronym: "GRI",           color: "bg-emerald-50 border-emerald-200 text-emerald-800", sub: "Global Reporting Initiative",                   scope: "Comprehensive impact disclosures for economy, environment & people" },
-  { acronym: "SASB",          color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "Sustainability Accounting Standards Board",       scope: "Industry-specific, financially material metrics" },
-  { acronym: "TCFD",          color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "Task Force on Climate-related Financial Disclosures", scope: "Governance, strategy & risk for climate risk" },
-  { acronym: "CSRD",          color: "bg-violet-50 border-violet-200 text-violet-800",    sub: "Corporate Sustainability Reporting Directive",    scope: "EU double-materiality regulation aligned to ESRS" },
-  { acronym: "ISSB",          color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "International Sustainability Standards Board",    scope: "IFRS S1 & S2 baseline for capital markets" },
-  { acronym: "CDP",           color: "bg-emerald-50 border-emerald-200 text-emerald-800", sub: "Carbon Disclosure Project",                       scope: "Investor-grade climate, forests & water questionnaires" },
-  { acronym: "UN SDGs",       color: "bg-teal-50 border-teal-200 text-teal-800",          sub: "UN Sustainable Development Goals",                scope: "Mapping corporate programs to global outcome targets" },
-  { acronym: "SBTi",          color: "bg-emerald-50 border-emerald-200 text-emerald-800", sub: "Science Based Targets initiative",                scope: "1.5°C-aligned decarbonisation pathway validation" },
-  { acronym: "PRI",           color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "Principles for Responsible Investment",           scope: "ESG integration, stewardship & transparency expectations" },
-  { acronym: "UN GC",         color: "bg-teal-50 border-teal-200 text-teal-800",          sub: "UN Global Compact",                               scope: "Ten principles on human rights, labour & environment" },
+  { slug: "gri",     acronym: "GRI",     color: "bg-emerald-50 border-emerald-200 text-emerald-800", sub: "Global Reporting Initiative",                   scope: "Comprehensive impact disclosures for economy, environment & people" },
+  { slug: "sasb",    acronym: "SASB",    color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "Sustainability Accounting Standards Board",       scope: "Industry-specific, financially material metrics" },
+  { slug: "tcfd",    acronym: "TCFD",    color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "Task Force on Climate-related Financial Disclosures", scope: "Governance, strategy & risk for climate risk" },
+  { slug: "csrd",    acronym: "CSRD",    color: "bg-violet-50 border-violet-200 text-violet-800",    sub: "Corporate Sustainability Reporting Directive",    scope: "EU double-materiality regulation aligned to ESRS" },
+  { slug: "issb",    acronym: "ISSB",    color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "International Sustainability Standards Board",    scope: "IFRS S1 & S2 baseline for capital markets" },
+  { slug: "cdp",     acronym: "CDP",     color: "bg-emerald-50 border-emerald-200 text-emerald-800", sub: "Carbon Disclosure Project",                       scope: "Investor-grade climate, forests & water questionnaires" },
+  { slug: "un-sdgs", acronym: "UN SDGs", color: "bg-teal-50 border-teal-200 text-teal-800",          sub: "UN Sustainable Development Goals",                scope: "Mapping corporate programs to global outcome targets" },
+  { slug: "sbti",    acronym: "SBTi",    color: "bg-emerald-50 border-emerald-200 text-emerald-800", sub: "Science Based Targets initiative",                scope: "1.5°C-aligned decarbonisation pathway validation" },
+  { slug: "pri",     acronym: "PRI",     color: "bg-sky-50 border-sky-200 text-sky-800",             sub: "Principles for Responsible Investment",           scope: "ESG integration, stewardship & transparency expectations" },
+  { slug: "un-gc",   acronym: "UN GC",   color: "bg-teal-50 border-teal-200 text-teal-800",          sub: "UN Global Compact",                               scope: "Ten principles on human rights, labour & environment" },
 ];
 
 const glossary = [
@@ -122,10 +130,10 @@ export default function ResourcesPage() {
               <BookOpen className="h-3.5 w-3.5" /> Knowledge Hub
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
-              Everything you need to master ESG
+              Free ESG Resources: Guides, Frameworks &amp; Sustainability Research
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg text-white/70">
-              Guides, framework explainers, a practitioner glossary, webinar recordings, and full API documentation — all free.
+              ESG guides, framework explainers for GRI, CSRD, TCFD, SASB, and ISSB, a practitioner glossary, expert blog, and API documentation — all free.
             </p>
           </div>
         </PageHero>
@@ -133,16 +141,17 @@ export default function ResourcesPage() {
         {/* ── Featured Guides ──────────────────── */}
         <section className="bg-surface py-14 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Featured guides</h2>
-            <p className="mt-3 text-base text-slate-600">Practical, no-hype analysis written by our research team.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">ESG Guides &amp; Sustainability Reporting Handbooks</h2>
+            <p className="mt-3 text-base text-slate-600">Practical, no-hype ESG analysis and compliance guides written by our research team — covering CSRD, SFDR, GRI, SASB, greenwashing detection, and more.</p>
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {guides.map(({ tag, tagColor, icon: Icon, title, description, readTime }) => (
-                <article key={title} className="group flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              {guides.map(({ slug, tag, tagColor, icon: Icon, title, description, readTime }) => (
+                <Link key={slug} href={`/resources/guides/${slug}`}
+                  className="group flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                   <div className="flex items-center justify-between">
                     <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${tagColor}`}>{tag}</span>
                     <Icon className="h-5 w-5 text-slate-400" />
                   </div>
-                  <h3 className="mt-4 flex-1 text-base font-bold text-slate-900">{title}</h3>
+                  <h3 className="mt-4 flex-1 text-base font-bold text-slate-900 group-hover:text-primary">{title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>
                   <div className="mt-5 flex items-center justify-between text-sm">
                     <span className="text-slate-400">{readTime}</span>
@@ -150,7 +159,7 @@ export default function ResourcesPage() {
                       Read <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>
@@ -161,21 +170,22 @@ export default function ResourcesPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3">
               <Globe className="h-6 w-6 text-primary" />
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900">Framework library</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900">ESG Framework Library: GRI, CSRD, TCFD, SASB, ISSB &amp; More</h2>
             </div>
             <p className="mt-3 max-w-2xl text-base text-slate-600">
-              Quick-reference cards for all 10 frameworks openESG scores against — with links to the official standard and our scoring methodology.
+              Quick-reference explainers for all 10 ESG frameworks OpenESG scores against — mandatory vs voluntary, reporting requirements, audience, and links to the official standard.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {frameworkCards.map(({ acronym, color, sub, scope }) => (
-                <div key={acronym} className={`group cursor-pointer rounded-xl border p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${color}`}>
+              {frameworkCards.map(({ slug, acronym, color, sub, scope }) => (
+                <Link key={acronym} href={`/resources/frameworks/${slug}`}
+                  className={`group cursor-pointer rounded-xl border p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${color}`}>
                   <p className="text-2xl font-black">{acronym}</p>
                   <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-slate-600/80">{sub}</p>
                   <p className="mt-2 text-xs leading-relaxed text-slate-700">{scope}</p>
                   <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-slate-500 transition group-hover:text-primary">
                     Learn more <ArrowRight className="h-3 w-3" />
                   </span>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -184,14 +194,65 @@ export default function ResourcesPage() {
         {/* ── Glossary ─────────────────────────── */}
         <section className="bg-surface py-14 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">ESG Glossary</h2>
-            <p className="mt-3 text-base text-slate-600">Plain-English definitions for the terms that matter most.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">ESG & Sustainability Glossary</h2>
+            <p className="mt-3 text-base text-slate-600">Plain-English definitions for the most important ESG terms — double materiality, Scope 3 emissions, SFDR, greenwashing, PAI indicators, and more.</p>
             <div className="mt-10 space-y-4">
               {glossary.map(({ term, def }) => (
                 <div key={term} className="rounded-xl border border-slate-100 bg-white p-5 shadow-sm">
                   <p className="font-bold text-primary">{term}</p>
                   <p className="mt-1 text-sm leading-relaxed text-slate-600">{def}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Blog ─────────────────────────────── */}
+        <section className="bg-white py-14 sm:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Newspaper className="h-6 w-6 text-primary" />
+                <h2 className="text-3xl font-bold tracking-tight text-slate-900">ESG &amp; Sustainability Blog</h2>
+              </div>
+              <Link href="/resources/blog" className="hidden items-center gap-1 text-sm font-semibold text-primary hover:underline sm:flex">
+                All articles <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <p className="mt-3 max-w-2xl text-base text-slate-600">
+              In-depth research on ESG ratings methodology, CSRD regulatory updates, greenwashing detection, carbon markets, and sustainable investing trends.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {blogPosts.slice(0, 4).map((post) => (
+                <Link key={post.slug} href={`/resources/blog/${post.slug}`}
+                  className="group flex flex-col rounded-2xl border border-slate-100 bg-surface p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                  <span className={`self-start rounded-full px-2.5 py-0.5 text-[10px] font-bold ${post.categoryColor}`}>
+                    {post.category}
+                  </span>
+                  <h3 className="mt-3 flex-1 text-sm font-bold leading-snug text-slate-900 group-hover:text-primary">
+                    {post.title}
+                  </h3>
+                  <p className="mt-2 text-[11px] leading-relaxed text-slate-500 line-clamp-3">{post.excerpt}</p>
+                  <div className="mt-4 flex items-center justify-between text-[11px]">
+                    <span className="text-slate-400">{post.readTime}</span>
+                    <span className="flex items-center gap-0.5 font-semibold text-primary transition group-hover:gap-1">
+                      Read <ArrowRight className="h-3 w-3" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {blogPosts.slice(4).map((post) => (
+                <Link key={post.slug} href={`/resources/blog/${post.slug}`}
+                  className="group flex items-start gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                  <div className="flex-1">
+                    <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${post.categoryColor}`}>{post.category}</span>
+                    <p className="mt-1.5 text-[12px] font-semibold leading-snug text-slate-800 group-hover:text-primary">{post.title}</p>
+                    <p className="mt-1 text-[10px] text-slate-400">{post.readTime} · {post.publishedDate}</p>
+                  </div>
+                  <ArrowRight className="mt-1 h-3.5 w-3.5 shrink-0 text-slate-300 group-hover:text-primary" />
+                </Link>
               ))}
             </div>
           </div>

@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const toyota: CompanyData = {
+  name: "Toyota Motor Corporation",
+  ticker: "TM",
+  sector: "Automotive",
+  country: "Japan",
+  score: 61,
+  e: 58,
+  s: 63,
+  g: 65,
+  csr: "B",
+  frameworks: ["GRI", "TCFD", "SASB", "UNSDG", "SBTi"],
+  frameworkRatings: { GRI: "B", TCFD: "B+", SASB: "B", UNSDG: "B", SBTi: "B-" },
+  hq: "Toyota City, Japan",
+  employees: "375,235",
+  revenue: "$274.4B",
+  tags: ["Automotive", "Hybrid", "Hydrogen", "Carbon Neutrality"],
+  badge: { label: "Toyota Environmental Challenge 2050", icon: "🚗", color: "from-red-800 to-red-600" },
+  about:
+    "Toyota is the world's largest automaker by volume, selling over 11 million vehicles annually. Its hybrid technology (Prius) defined fuel efficiency for a generation. However, Toyota has drawn sustained criticism for lobbying against stricter EV mandates and its multi-pathway strategy — which bets on hybrids and hydrogen alongside BEVs — is seen by some analysts as a delay tactic in the critical decade for automotive decarbonisation.",
+  extended: {
+    emissions: {
+      value: "432.5M tCO₂e",
+      trend: "-3.1% vs 2019",
+      trendDir: "down",
+      goal: "Carbon Neutral by 2050",
+      goalDetail: "Vehicle lifecycle net-zero by 2050 · Manufacturing -35% by 2035",
+    },
+    progressMetrics: [
+      { label: "Electrified Vehicles (% of sales)", pct: 35, detail: "35% of global sales are HEV/PHEV/BEV/FCEV — Toyota defines all as electrified, masking low pure-EV share" },
+      { label: "BEV Share of Sales",                pct: 4,  detail: "Only 4% of sales are battery-electric vehicles — well behind GM, Ford, VW, and far behind Tesla/BYD" },
+      { label: "Manufacturing Carbon Reduction",    pct: 28, detail: "28% reduction in manufacturing emissions per vehicle vs 2019 baseline — on track for 2030 target" },
+    ],
+    emissionsBreakdown: [
+      { label: "Vehicle Use (Scope 3)",        pct: 78, value: "337.4M tCO₂e", color: "#ef4444" },
+      { label: "Supply Chain (Scope 3)",       pct: 13, value: "56.2M tCO₂e",  color: "#f97316" },
+      { label: "Manufacturing (Scope 1&2)",    pct: 7,  value: "30.3M tCO₂e",  color: "#f59e0b" },
+      { label: "Other Operations",             pct: 2,  value: "8.6M tCO₂e",   color: "#84cc16" },
+    ],
+    highlights: [
+      { value: "20M+",  label: "Hybrid vehicles sold globally since 1997",   icon: "⚡" },
+      { value: "30+",   label: "BEV models planned by 2030",                 icon: "🚗" },
+      { value: "$35B",  label: "EV investment committed through 2030",       icon: "💰" },
+      { value: "#1",    label: "Global automaker by volume (11M+ units/yr)", icon: "🏆" },
+      { value: "2050",  label: "Carbon neutral across vehicle lifecycle",     icon: "🎯" },
+    ],
+    risks: [
+      { label: "BEV Transition Lag",          detail: "Toyota's BEV share remains below 5% while competitors accelerate. Multi-pathway hedging may leave Toyota exposed as EV cost parity arrives faster than forecast.", dot: "bg-red-400" },
+      { label: "Lobbying Against EV Mandates",detail: "Toyota has actively lobbied against strict BEV mandates in the US, EU, and Japan — a contradiction of its stated net-zero ambition that has drawn shareholder resolutions.", dot: "bg-red-400" },
+      { label: "Hydrogen Bet Uncertainty",    detail: "Toyota's large hydrogen fuel cell programme (Mirai) remains commercially marginal. If hydrogen infrastructure fails to scale, stranded investment risk is material.", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 58.5 },
+        { label: "Jan '26", score: 59.0 },
+        { label: "Feb '26", score: 59.5 },
+        { label: "Mar '26", score: 60.2 },
+        { label: "Apr W1",  score: 60.5 },
+        { label: "Apr W2",  score: 60.8 },
+        { label: "Apr W3",  score: 61.0 },
+      ],
+      weeklyDeltas: [0.5, 0.5, 0.7, 0.3, 0.2],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Toyota unveils bZ Series solid-state battery roadmap with 1,200km range for 2028 production",
+          source: "Toyota Motor Corporation / Nikkei",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral by 2050",
+          analysis: "Solid-state battery technology would materially change Toyota's BEV competitiveness if it achieves commercialisation. The 2028 target is aggressive but backed by Panasonic partnership investments. This is credible R&D progress, though execution risk remains high and rivals are also advancing solid-state programmes.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "Toyota lobbying documents show opposition to 2035 EU combustion engine ban in leaked filings",
+          source: "Corporate Europe Observatory / The Guardian",
+          verdict: "greenwashing",
+          relatedGoal: "Carbon Neutral by 2050",
+          analysis: "Internal Toyota lobbying documents reveal coordinated opposition to the EU's 2035 ICE ban while the company publicly commits to carbon neutrality. This strategy of political interference in climate policy while marketing environmental credentials is a textbook example of systemic greenwashing at the advocacy level.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "Toyota hydrogen truck pilot with 7-Eleven Japan logs 2M zero-emission delivery kilometres",
+          source: "Toyota Mobility Foundation",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral by 2050",
+          analysis: "The commercial hydrogen truck programme demonstrates viable use-case economics for heavy logistics in Japan's distribution network. 2 million kilometres of real-world operation provides meaningful data on reliability and TCO. This is genuine progress on hard-to-abate transport emissions, an area where BEVs face real limitations.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "ISS recommends against Toyota climate resolution as BEV targets lag industry peers by 5+ years",
+          source: "Institutional Shareholder Services / Reuters",
+          verdict: "questionable",
+          relatedGoal: "Carbon Neutral by 2050",
+          analysis: "ISS's recommendation reflects growing investor concern that Toyota's multi-pathway strategy is insufficiently ambitious relative to the pace of BEV adoption. At Toyota's AGM last year, 25% of shareholders voted against the company's climate strategy — an unusually high signal of institutional dissatisfaction.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "Toyota Thailand factory achieves 100% renewable electricity, first Southeast Asian plant to do so",
+          source: "Toyota Sustainability Report 2025",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral by 2050",
+          analysis: "The Thailand factory milestone is verified and material — it covers 280,000 vehicle production annually. It also signals Toyota's ability to execute renewable transitions in emerging market manufacturing, a region where renewable procurement has historically been more difficult than in Europe or Japan.",
+        },
+      ],
+    },
+  },
+};
+
+export default toyota;

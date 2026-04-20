@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const airbus: CompanyData = {
+  name: "Airbus SE",
+  ticker: "AIR",
+  sector: "Industrials",
+  country: "France",
+  score: 67,
+  e: 65,
+  s: 68,
+  g: 70,
+  csr: "B+",
+  frameworks: ["GRI", "TCFD", "SASB", "UNSDG", "SBTi"],
+  frameworkRatings: { GRI: "B+", TCFD: "B+", SASB: "B", UNSDG: "B+", SBTi: "B" },
+  hq: "Leiden, Netherlands",
+  employees: "134,931",
+  revenue: "$78.9B",
+  tags: ["Aerospace", "Hydrogen Aircraft", "SAF", "ZEROe"],
+  badge: { label: "ZEROe Programme", icon: "✈️", color: "from-blue-800 to-cyan-600" },
+  about:
+    "Airbus is the world's largest commercial aircraft manufacturer, competing with Boeing for orders from 800+ airlines globally. Aviation accounts for approximately 2.5% of global CO₂ emissions but 4% of effective radiative forcing when contrails are included. Airbus has committed to delivering a commercial hydrogen-powered aircraft by 2035 and is driving adoption of sustainable aviation fuel (SAF) across its customer base through airspace modernisation initiatives.",
+  extended: {
+    emissions: {
+      value: "1.42M tCO₂e",
+      trend: "-19% vs 2015",
+      trendDir: "down",
+      goal: "Net Zero by 2050",
+      goalDetail: "New aircraft -50% CO₂ per seat-km by 2035 · Industry net-zero 2050",
+    },
+    progressMetrics: [
+      { label: "SAF Compatibility (Fleet)",        pct: 100, detail: "All in-service Airbus aircraft certified for 50% SAF blend · 100% SAF blend by 2030" },
+      { label: "ZEROe Hydrogen Programme",         pct: 35,  detail: "Ground tests of hydrogen combustion engine complete · Flight testing planned 2026" },
+      { label: "Manufacturing CO₂ Reduction",      pct: 41,  detail: "41% reduction in manufacturing carbon intensity vs 2015 · 63% target by 2030" },
+    ],
+    emissionsBreakdown: [
+      { label: "Sold Aircraft Lifecycle (Scope 3)",pct: 83, value: "1.18M tCO₂e", color: "#ef4444" },
+      { label: "Manufacturing Operations",         pct: 10, value: "0.14M tCO₂e", color: "#f97316" },
+      { label: "Supply Chain (Scope 3)",           pct: 5,  value: "0.07M tCO₂e", color: "#f59e0b" },
+      { label: "Business Travel & Other",          pct: 2,  value: "0.03M tCO₂e", color: "#84cc16" },
+    ],
+    highlights: [
+      { value: "2035",  label: "First commercial hydrogen aircraft delivery",  icon: "✈️" },
+      { value: "100%",  label: "Fleet SAF-compatible (50% blend)",            icon: "🌱" },
+      { value: "3",     label: "ZEROe hydrogen concept aircraft in development", icon: "⚡" },
+      { value: "-50%",  label: "CO₂ per seat-km target for new jets by 2035", icon: "🎯" },
+      { value: "€3B+",  label: "R&D invested in decarbonisation technologies", icon: "💡" },
+    ],
+    risks: [
+      { label: "Hydrogen Infrastructure Dependency", detail: "Airbus's 2035 hydrogen aircraft plan requires airport hydrogen infrastructure that does not yet exist. The risk of ecosystem failure is outside Airbus's control and could delay or strand the ZEROe programme.", dot: "bg-red-400" },
+      { label: "SAF Supply Constraint",              detail: "SAF currently represents less than 0.1% of global jet fuel. Even at 100% SAF compatibility, the bottleneck is supply — SAF production must grow 100-fold by 2050 for aviation net-zero.", dot: "bg-amber-400" },
+      { label: "A380 & Legacy Fleet Emissions",      detail: "Continued operation of highly fuel-inefficient legacy fleets (A380, older A320 families) by airline customers means Airbus's sold-aircraft Scope 3 emissions will remain high for 20+ years regardless of new aircraft efficiency gains.", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 64.0 },
+        { label: "Jan '26", score: 64.5 },
+        { label: "Feb '26", score: 65.0 },
+        { label: "Mar '26", score: 65.8 },
+        { label: "Apr W1",  score: 66.2 },
+        { label: "Apr W2",  score: 66.6 },
+        { label: "Apr W3",  score: 67.0 },
+      ],
+      weeklyDeltas: [0.5, 0.5, 0.8, 0.4, 0.4],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Airbus completes first 100% sustainable aviation fuel test flight on A320neo in Toulouse",
+          source: "Airbus Press Release / Aviation Week",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The 100% SAF demonstration flight on a production-standard A320neo engine is a meaningful technical milestone. CFM LEAP engine certification for 100% SAF blend removes the last technical barrier to full SAF adoption. The constraint now is purely SAF supply economics, not aircraft compatibility — a genuine advance in decarbonisation readiness.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "ZEROe hydrogen engine ground tests pass 200-hour milestone, Airbus confirms 2026 flight schedule",
+          source: "Airbus Engineering / Flight Global",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "200 hours of ground testing is a credible engineering milestone for a novel propulsion system. The test programme has validated combustion stability, NOx emissions (28% lower than kerosene), and cold-start performance. The 2026 flight test schedule is realistic given current progress — Airbus's hydrogen programme continues to track its stated roadmap.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "Airbus lobbyists oppose EU carbon border adjustment on aviation fuel imports, leaked documents show",
+          source: "Transport & Environment / Politico",
+          verdict: "questionable",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Airbus has publicly supported SAF mandates while its trade representatives lobby against the carbon price mechanism that would make SAF economically competitive. This creates a tension between stated climate goals and commercial short-term interests — though Airbus argues CBAM would harm European airline competitiveness versus non-EU carriers.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "Airbus and Air France-KLM sign 10-year SAF purchase agreement covering 1.5M tonnes",
+          source: "Airbus Commercial / Air France-KLM",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Long-term SAF offtake agreements are critical to financing new SAF production capacity. The 1.5M tonne commitment provides revenue certainty for SAF producers over a decade, enabling project finance for new facilities. This is the demand-side signal needed to unlock SAF supply chain investment at scale.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "Airbus Factory of the Future in Hamburg achieves ISO 50001 with 73% renewable electricity",
+          source: "Airbus Sustainability Update",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The Hamburg A320 Family final assembly line is Airbus's highest-volume production facility. Achieving 73% renewable electricity and ISO 50001 energy management certification at this scale demonstrates that industrial manufacturing decarbonisation is executable. The facility's electricity demand equals a mid-sized European town, making this a material operational achievement.",
+        },
+      ],
+    },
+  },
+};
+
+export default airbus;

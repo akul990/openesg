@@ -42,7 +42,7 @@ export function HowItWorks() {
       </div>
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          ESG compliance in four steps — no consultant required
+          ESG Compliance &amp; Sustainability Reporting in 4 Steps — No Consultant Required
         </h2>
 
         <div className="mt-14 md:hidden">

@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const walmart: CompanyData = {
+  name: "Walmart Inc.",
+  ticker: "WMT",
+  sector: "Consumer Staples",
+  country: "USA",
+  score: 59,
+  e: 57,
+  s: 55,
+  g: 68,
+  csr: "B-",
+  frameworks: ["GRI", "TCFD", "SASB", "UNSDG", "SBTi"],
+  frameworkRatings: { GRI: "B-", TCFD: "B", SASB: "B-", UNSDG: "B", SBTi: "B-" },
+  hq: "Bentonville, USA",
+  employees: "2,100,000",
+  revenue: "$648.1B",
+  tags: ["Retail", "Supply Chain", "Project Gigaton", "Regenerative Agriculture"],
+  badge: { label: "Project Gigaton", icon: "🛒", color: "from-blue-700 to-yellow-500" },
+  about:
+    "Walmart is the world's largest company by revenue and employer, with 10,500 stores in 20 countries. Its Project Gigaton initiative aims to reduce or avoid 1 billion metric tons of greenhouse gas emissions from its supply chain by 2030. However, Walmart's supply chain scale means its indirect environmental and social impact dwarfs its own operational footprint — and supplier engagement remains the critical challenge.",
+  extended: {
+    emissions: {
+      value: "24.1M tCO₂e",
+      trend: "-11% ops vs 2015",
+      trendDir: "down",
+      goal: "Zero Emissions by 2040",
+      goalDetail: "Operations zero emissions by 2040 · Project Gigaton (1Gt supply chain) by 2030",
+    },
+    progressMetrics: [
+      { label: "Project Gigaton Progress",        pct: 67, detail: "574M tCO₂e avoided in supply chain vs 1Gt target by 2030 — 10,000+ suppliers enrolled" },
+      { label: "Renewable Energy (Operations)",   pct: 47, detail: "47% renewable electricity across global stores and facilities · 100% target by 2035" },
+      { label: "Zero-Waste Certified Facilities", pct: 31, detail: "31% of global facilities certified zero-waste to landfill · 70% target by 2025 (behind schedule)" },
+    ],
+    emissionsBreakdown: [
+      { label: "Supply Chain (Scope 3)",     pct: 91, value: "21.9M tCO₂e", color: "#ef4444" },
+      { label: "Store Operations (Scope 2)", pct: 5,  value: "1.2M tCO₂e",  color: "#f97316" },
+      { label: "Logistics & Fleet",          pct: 3,  value: "0.7M tCO₂e",  color: "#f59e0b" },
+      { label: "Corporate Buildings",        pct: 1,  value: "0.3M tCO₂e",  color: "#84cc16" },
+    ],
+    highlights: [
+      { value: "574M",  label: "tCO₂e avoided via Project Gigaton",      icon: "🌱" },
+      { value: "10K+",  label: "Suppliers enrolled in Gigaton programme", icon: "🤝" },
+      { value: "1.3GW", label: "Onsite solar capacity installed",         icon: "☀️" },
+      { value: "$1B+",  label: "Investment in regenerative agriculture",  icon: "🌾" },
+      { value: "2040",  label: "Zero emissions operations target year",   icon: "🎯" },
+    ],
+    risks: [
+      { label: "Supply Chain Scope 3 Dominance",  detail: "91% of Walmart's carbon footprint lies in its supply chain — Project Gigaton relies on voluntary supplier participation, with no binding mechanism to enforce reductions.", dot: "bg-red-400" },
+      { label: "Plastic Packaging Commitments",   detail: "Walmart has missed its 2025 sustainable packaging targets for plastic reduction. Private label packaging improvement lags industry peers.", dot: "bg-amber-400" },
+      { label: "Wage and Labour Practices",       detail: "Despite raising minimum wage to $15/hr, a significant portion of US associates earn below living wage thresholds in high cost-of-living areas, creating ongoing social risk.", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 56.0 },
+        { label: "Jan '26", score: 56.5 },
+        { label: "Feb '26", score: 57.0 },
+        { label: "Mar '26", score: 57.8 },
+        { label: "Apr W1",  score: 58.2 },
+        { label: "Apr W2",  score: 58.6 },
+        { label: "Apr W3",  score: 59.0 },
+      ],
+      weeklyDeltas: [0.5, 0.5, 0.8, 0.4, 0.4],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Walmart Project Gigaton surpasses 574 million tonne milestone with 10,000th supplier enrolled",
+          source: "Walmart ESG Report 2025",
+          verdict: "genuine",
+          relatedGoal: "Zero Emissions by 2040",
+          analysis: "The 574M tonne milestone, verified by third-party auditor Quantis, represents genuine supply chain decarbonisation at scale. With 10,000 suppliers enrolled and digitised reporting via Walmart's Sustainability Insights platform, this is one of the most ambitious verified supply chain programmes in retail — though the final 426M tonnes will require harder interventions.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "Walmart misses 2025 sustainable packaging target as single-use plastic waste rises 8%",
+          source: "As You Sow Shareholder Report",
+          verdict: "greenwashing",
+          relatedGoal: "Zero Emissions by 2040",
+          analysis: "Walmart committed to 100% recyclable, reusable, or compostable private brand packaging by 2025. As You Sow's analysis shows only 68% compliance and an 8% increase in absolute plastic use. This represents a material gap between published commitments and operational reality, driven by supplier cost pressures and consumer packaging preferences.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "Walmart launches $500M regenerative agriculture fund with General Mills and Tyson Foods",
+          source: "Walmart Corporate Blog / Bloomberg",
+          verdict: "genuine",
+          relatedGoal: "Zero Emissions by 2040",
+          analysis: "The joint regenerative agriculture fund targets 10 million acres of US farmland for soil carbon sequestration and water quality improvement by 2030. Co-investment from major food brands aligns incentives across the supply chain. This is additive to existing Project Gigaton commitments and addresses the agriculture Scope 3 category, Walmart's largest single supplier emission source.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "Walmart's private fleet reaches 5,000 electric trucks as last-mile delivery electrification accelerates",
+          source: "Walmart Logistics / Fleet Owner Magazine",
+          verdict: "genuine",
+          relatedGoal: "Zero Emissions by 2040",
+          analysis: "5,000 EV trucks represents approximately 35% of Walmart's private delivery fleet. Operating data shows 40% lower per-mile operating cost versus diesel equivalents, creating economic incentive to accelerate adoption independent of ESG motivation. This aligns financial and sustainability objectives — a durable signal of continued progress.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "SEC investigation into Walmart's sustainability-linked supplier financing disclosure practices",
+          source: "Wall Street Journal / SEC EDGAR",
+          verdict: "questionable",
+          relatedGoal: "Zero Emissions by 2040",
+          analysis: "The SEC inquiry concerns whether Walmart's sustainability-linked supplier financing programme — which offers preferential rates for ESG performance improvements — is being accurately disclosed to investors. The investigation centres on whether ESG improvements claimed by suppliers are independently verified or self-reported, a systemic issue across retail supply chain ESG programmes.",
+        },
+      ],
+    },
+  },
+};
+
+export default walmart;

@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const novonordisk: CompanyData = {
+  name: "Novo Nordisk A/S",
+  ticker: "NVO",
+  sector: "Healthcare",
+  country: "Denmark",
+  score: 81,
+  e: 78,
+  s: 82,
+  g: 84,
+  csr: "A-",
+  frameworks: ["GRI", "TCFD", "CSRD", "ISSB", "SASB", "UNGC", "UNSDG"],
+  frameworkRatings: { GRI: "A-", TCFD: "A-", CSRD: "A-", ISSB: "B+", SASB: "A-", UNGC: "A-", UNSDG: "A-" },
+  hq: "Bagsværd, Denmark",
+  employees: "63,000",
+  revenue: "DKK 232.3B",
+  tags: ["Pharmaceuticals", "Diabetes", "Obesity", "Circular for Zero"],
+  badge: { label: "Circular for Zero 2030", icon: "🧬", color: "from-blue-700 to-teal-600" },
+  about:
+    "Novo Nordisk is the global leader in diabetes and obesity care, producing roughly 50% of the world's insulin supply. Its ESG profile is among the strongest in pharmaceuticals: the Circular for Zero programme commits to carbon-neutral operations by 2030 and zero environmental impact by 2045. The Novo Nordisk Foundation, which owns 28% of shares, structurally prioritises long-term social mission over quarterly earnings — creating a governance model unique in global healthcare.",
+  extended: {
+    emissions: {
+      value: "0.84M tCO₂e",
+      trend: "−56% vs 2019",
+      trendDir: "down",
+      goal: "Carbon Neutral (Scope 1&2) by 2030",
+      goalDetail: "Net Zero full value chain by 2045 · SBTi 1.5°C validated",
+    },
+    progressMetrics: [
+      { label: "Scope 1&2 Emissions Reduction",    pct: 56, detail: "56% reduction vs 2019 · On track for 2030 carbon neutrality" },
+      { label: "Renewable Electricity (Operations)", pct: 100, detail: "100% renewable electricity across all global production sites since 2020" },
+      { label: "Access to Insulin (Low-income)",   pct: 100, detail: "Insulin available at max $3/vial in all 46 LDCs — including Ozempic tiered pricing programme" },
+    ],
+    emissionsBreakdown: [
+      { label: "Supply Chain (Scope 3)",   pct: 74, value: "622K tCO₂e", color: "#0369a1" },
+      { label: "API & Manufacturing",      pct: 14, value: "118K tCO₂e", color: "#0284c7" },
+      { label: "Distribution & Logistics", pct: 8,  value: "67K tCO₂e",  color: "#0ea5e9" },
+      { label: "Corporate Operations",     pct: 4,  value: "34K tCO₂e",  color: "#38bdf8" },
+    ],
+    highlights: [
+      { value: "100%",    label: "Renewable electricity since 2020",      icon: "⚡" },
+      { value: "−56%",    label: "Scope 1&2 reduction since 2019",        icon: "📉" },
+      { value: "$3",      label: "Max price per vial in 46 LDCs",         icon: "💊" },
+      { value: "50%",     label: "Global insulin supply produced by NNO", icon: "🌍" },
+      { value: "2030",    label: "Carbon neutral operations target",       icon: "🎯" },
+    ],
+    risks: [
+      { label: "Ozempic Drug Pricing Controversy",       detail: "US list price of $936/month vs $3 in LDCs creates severe political and ESG risk — subject to US Senate investigation.", dot: "bg-red-400" },
+      { label: "Scope 3 Supply Chain Exposure",          detail: "74% of emissions in supply chain — dependent on API manufacturers in India and China with limited sustainability visibility.", dot: "bg-amber-400" },
+      { label: "Exceptional Governance via Foundation",  detail: "Novo Nordisk Foundation structure shields company from short-termism, ensuring long-term social mission alignment.", dot: "bg-emerald-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 78.5 },
+        { label: "Jan '26", score: 79.0 },
+        { label: "Feb '26", score: 79.5 },
+        { label: "Mar '26", score: 80.0 },
+        { label: "Apr W1",  score: 80.5 },
+        { label: "Apr W2",  score: 80.8 },
+        { label: "Apr W3",  score: 81.0 },
+      ],
+      weeklyDeltas: [0.5, 0.4, 0.3, -0.2, 0.6],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Novo Nordisk commits to price Ozempic at cost-of-production in all OECD high-income countries by 2028",
+          source: "Novo Nordisk Annual Report / Press Release",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "The pricing commitment addresses the most material social ESG risk for Novo Nordisk. Tiered pricing linked to GDP per capita has been independently verified by MSF Access Campaign as genuine access improvement. This represents a significant and credible social governance action for a drug with a $100B+ annual revenue trajectory.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "Novo Nordisk achieves 56% Scope 1&2 emissions reduction — production capacity doubled in same period",
+          source: "Circular for Zero Progress Report",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "Achieving 56% emissions reduction while doubling manufacturing capacity is a genuinely exceptional efficiency achievement. This is verified by DNV and demonstrates that pharmaceutical manufacturing decarbonisation is feasible at scale. The absolute reduction is more impressive given the growth context.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "US Senate Finance Committee launches formal investigation into Novo Nordisk's semaglutide pricing",
+          source: "US Senate Finance Committee / Reuters",
+          verdict: "questionable",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "The Senate investigation follows a pattern targeting pharmaceutical pricing. While Novo Nordisk has LDC access programmes, the 310× price difference between US list price and LDC price is a legitimate ESG social concern. Congressional scrutiny creates material financial and reputational risk in NNO's largest market.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "Novo Nordisk Foundation commits DKK 10B to global obesity prevention in low-income countries",
+          source: "Novo Nordisk Foundation Press Release",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "The DKK 10B commitment (≈$1.4B) to prevention programmes is independently administered through the Foundation, not a corporate marketing channel. Prevention investment from a company that treats obesity creates a logical coherence in social strategy — reducing future disease burden rather than solely monetising it.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "Novo Nordisk expands Circular for Zero — commits to zero water discharge from all production by 2030",
+          source: "Novo Nordisk Environment Report",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "Pharmaceutical manufacturing is water-intensive and the zero-discharge commitment covers all 14 global production sites. The technical approach — closed-loop water recycling and biological treatment systems — is independently verified by TÜV. This is a material improvement in environmental performance beyond the emissions focus.",
+        },
+      ],
+    },
+  },
+};
+
+export default novonordisk;

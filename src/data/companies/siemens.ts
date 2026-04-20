@@ -1,0 +1,110 @@
+import type { CompanyData } from "./types";
+
+const siemens: CompanyData = {
+  name: "Siemens AG",
+  ticker: "SIE",
+  sector: "Industrials",
+  country: "Germany",
+  score: 76,
+  e: 74,
+  s: 76,
+  g: 79,
+  csr: "A-",
+  frameworks: ["GRI", "TCFD", "CSRD", "ISSB", "SASB", "UNGC", "ISO"],
+  frameworkRatings: { GRI: "A-", TCFD: "B+", CSRD: "A-", ISSB: "B+", SASB: "B+", UNGC: "A-", ISO: "A" },
+  hq: "Munich, Germany",
+  employees: "320,000",
+  revenue: "$€77.8B",
+  tags: ["Industrial Automation", "Smart Infrastructure", "Energy Transition", "Decarbonisation Tech"],
+  badge: { label: "DEGREE Sustainability Framework", icon: "⚙️", color: "from-slate-700 to-teal-700" },
+  about:
+    "Siemens is a global industrial technology leader operating across automation, electrification, and digitalization. Its DEGREE framework sets binding 2030 sustainability targets across Decarbonization, Ethics, Governance, Resource Efficiency, Equity, and Employability. Siemens is unique among industrials in that its own products — smart grids, rail electrification, industrial automation — are core tools enabling other companies' energy transitions.",
+  extended: {
+    emissions: {
+      value: "2.3M tCO₂e",
+      trend: "−46% vs 2019",
+      trendDir: "down",
+      goal: "Carbon Neutral (Scope 1&2) by 2030",
+      goalDetail: "Net Zero across full value chain by 2050 · SBTI 1.5°C aligned",
+    },
+    progressMetrics: [
+      { label: "Scope 1&2 Emissions Reduction",        pct: 46, detail: "46% reduction vs 2019 · Carbon neutral own operations by 2030" },
+      { label: "Renewable Electricity (Operations)",   pct: 80, detail: "80% renewable electricity across global manufacturing sites" },
+      { label: "Supplier Sustainability Assessments",  pct: 70, detail: "70% of procurement spend covered by EcoVadis-based supplier assessments" },
+    ],
+    emissionsBreakdown: [
+      { label: "Supply Chain (Scope 3)", pct: 87, value: "2.0M tCO₂e",  color: "#0891b2" },
+      { label: "Operations (Scope 1)",   pct: 8,  value: "184K tCO₂e",  color: "#0e7490" },
+      { label: "Energy Use (Scope 2)",   pct: 5,  value: "115K tCO₂e",  color: "#164e63" },
+    ],
+    highlights: [
+      { value: "−46%",  label: "Scope 1&2 emissions since 2019",    icon: "📉" },
+      { value: "80%",   label: "Renewable electricity in operations", icon: "⚡" },
+      { value: "€3.5B", label: "Invested in R&D for green tech 2024", icon: "🔬" },
+      { value: "70%",   label: "Suppliers assessed for sustainability", icon: "🔗" },
+      { value: "2030",  label: "Carbon neutral own operations target", icon: "🎯" },
+    ],
+    risks: [
+      { label: "Heavy Scope 3 Supply Chain Dependency", detail: "87% of total emissions are Scope 3 — significant exposure to supplier ESG performance across 60+ countries.", dot: "bg-amber-400" },
+      { label: "Defence Contracts ESG Tension",         detail: "Siemens supplies infrastructure for defence projects — creating tension between governance ethics and certain ESG frameworks.", dot: "bg-amber-400" },
+      { label: "Strong Governance & Transparency",      detail: "DEGREE framework with independently verified KPIs, annual external assurance, and binding executive ESG targets.", dot: "bg-emerald-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 73.0 },
+        { label: "Jan '26", score: 73.6 },
+        { label: "Feb '26", score: 74.0 },
+        { label: "Mar '26", score: 74.6 },
+        { label: "Apr W1",  score: 75.0 },
+        { label: "Apr W2",  score: 75.4 },
+        { label: "Apr W3",  score: 76.0 },
+      ],
+      weeklyDeltas: [0.3, 0.4, -0.2, 0.6, 0.3],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Siemens achieves 46% Scope 1&2 emissions reduction ahead of 2030 schedule",
+          source: "Siemens DEGREE Report 2025",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "The 46% reduction is independently assured by Deloitte and aligns with a 1.5°C Science Based Target. Siemens has achieved this through on-site solar, green electricity procurement, and manufacturing process efficiency. The trajectory makes the 2030 carbon neutrality target credible.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "Siemens Smart Infrastructure wins €2.1B EU rail electrification contract — directly enables third-party decarbonisation",
+          source: "Siemens Press Release / EC Transport",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "This contract is a direct measure of Siemens's sustainability impact beyond its own operations. Rail electrification displaces road freight and passenger aviation. Siemens's enabled emissions avoidance likely exceeds its own footprint — a material but under-reported ESG positive.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "Siemens Energy spin-off faces ongoing turbine failures — reputational spillover risk",
+          source: "Financial Times",
+          verdict: "questionable",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "Siemens Energy (separately listed) continues to face wind turbine blade failure issues, creating negative ESG association for the Siemens brand. Although legally separated, the shared branding creates reputational risk that may affect investor ESG perception of the parent.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "Siemens launches AI-powered industrial decarbonisation platform for manufacturing clients",
+          source: "Siemens Digital Industries",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "The new SiGreen platform enables Siemens customers to calculate product carbon footprints at component level. This is a commercially validated sustainability tool that creates value chain transparency. It represents a business model innovation where Siemens profits from decarbonisation services.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "Siemens supplier sustainability programme expanded to cover 70% of procurement spend",
+          source: "Siemens Procurement Sustainability Report",
+          verdict: "genuine",
+          relatedGoal: "Carbon Neutral (Scope 1&2) by 2030",
+          analysis: "Covering 70% of procurement spend through EcoVadis assessments is a leading practice in industrial supply chain sustainability. This addresses the 87% Scope 3 exposure and creates upstream accountability. The programme is independently operated and scores are not self-reported.",
+        },
+      ],
+    },
+  },
+};
+
+export default siemens;

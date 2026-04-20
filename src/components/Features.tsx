@@ -66,7 +66,7 @@ export function Features() {
       </div>
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Everything a growing company needs to stay ESG-compliant
+          Everything a Growing Company Needs for ESG Compliance &amp; Sustainability Reporting
         </h2>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card) => {

@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const jpmorgan: CompanyData = {
+  name: "JPMorgan Chase & Co.",
+  ticker: "JPM",
+  sector: "Financials",
+  country: "USA",
+  score: 55,
+  e: 48,
+  s: 58,
+  g: 62,
+  csr: "B-",
+  frameworks: ["TCFD", "GRI", "SASB", "UNSDG", "PRI"],
+  frameworkRatings: { TCFD: "B", GRI: "B-", SASB: "B", UNSDG: "B-", PRI: "B" },
+  hq: "New York, USA",
+  employees: "309,926",
+  revenue: "$158.1B",
+  tags: ["Banking", "Sustainable Finance", "Green Bonds", "Paris Alignment"],
+  badge: { label: "Paris-Aligned Commitment", icon: "🏛️", color: "from-blue-900 to-blue-700" },
+  about:
+    "JPMorgan Chase is the world's largest bank by assets, with over $3.9 trillion in total assets. It has committed $2.5 trillion in sustainable development financing by 2030 and published net-zero operational targets. However, it remains the largest financier of fossil fuel projects globally since the Paris Agreement — a fundamental tension at the heart of its ESG positioning.",
+  extended: {
+    emissions: {
+      value: "2.38M tCO₂e",
+      trend: "-36% ops vs 2017",
+      trendDir: "down",
+      goal: "Net Zero by 2050",
+      goalDetail: "Operations net-zero 2030 · Portfolio alignment by 2050",
+    },
+    progressMetrics: [
+      { label: "Sustainable Finance Deployed (2021–)", pct: 62, detail: "$1.55T of $2.5T target deployed across green bonds, clean energy lending, and social finance" },
+      { label: "Renewable Energy (Operations)",        pct: 100, detail: "100% renewable electricity for global operations achieved in 2023 via PPAs and RECs" },
+      { label: "Fossil Fuel Portfolio Alignment",      pct: 18, detail: "18% of energy portfolio aligned with Paris 1.5°C scenario — significant gap vs 2030 targets" },
+    ],
+    emissionsBreakdown: [
+      { label: "Financed Emissions (Oil & Gas)",  pct: 52, value: "1.24M tCO₂e", color: "#ef4444" },
+      { label: "Financed Emissions (Power)",      pct: 28, value: "0.67M tCO₂e", color: "#f97316" },
+      { label: "Corporate Operations",            pct: 12, value: "0.29M tCO₂e", color: "#f59e0b" },
+      { label: "Other Financed Sectors",          pct: 8,  value: "0.18M tCO₂e", color: "#84cc16" },
+    ],
+    highlights: [
+      { value: "$2.5T",  label: "Sustainable finance commitment by 2030", icon: "🌱" },
+      { value: "#1",     label: "Largest fossil fuel financier globally",  icon: "⚠️" },
+      { value: "100%",   label: "Renewable electricity in operations",     icon: "☀️" },
+      { value: "$1B",    label: "DEI and racial equity commitment",        icon: "🤝" },
+      { value: "2050",   label: "Portfolio net-zero target year",         icon: "🎯" },
+    ],
+    risks: [
+      { label: "Fossil Fuel Financing Contradiction", detail: "JPMorgan financed $41B in fossil fuel projects in 2023 alone — the highest of any global bank — directly undermining its Paris-alignment narrative.", dot: "bg-red-400" },
+      { label: "Net-Zero Target Credibility",         detail: "Portfolio emissions targets cover only 3 high-carbon sectors; the majority of financed emissions remain outside net-zero scope.", dot: "bg-red-400" },
+      { label: "ESG Backlash Exposure",               detail: "As the largest US bank, JPMorgan faces political pressure from both pro-ESG regulators (EU) and anti-ESG state legislatures (Texas, Florida divestment laws).", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 52.0 },
+        { label: "Jan '26", score: 52.5 },
+        { label: "Feb '26", score: 53.0 },
+        { label: "Mar '26", score: 54.0 },
+        { label: "Apr W1",  score: 54.2 },
+        { label: "Apr W2",  score: 54.6 },
+        { label: "Apr W3",  score: 55.0 },
+      ],
+      weeklyDeltas: [0.5, 0.5, 1.0, 0.2, 0.4],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "JPMorgan issues $3B green bond to fund renewable energy projects across emerging markets",
+          source: "JPMorgan Investor Relations / Bloomberg",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The $3B green bond issuance is aligned with the Climate Bonds Standard and proceeds are ring-fenced for verified renewable energy projects in South Asia and Sub-Saharan Africa. Third-party allocation reporting is committed within 12 months. This represents credible action on sustainable finance commitments.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "Banking on Climate Chaos report names JPMorgan world's largest fossil fuel financier for 7th consecutive year",
+          source: "Rainforest Action Network / Sierra Club",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Despite Paris-alignment commitments and extensive ESG marketing, JPMorgan provided $41.3B in fossil fuel financing in 2023. The Bank's net-zero framing focuses on operational emissions (a rounding error) while its portfolio — the material climate impact — continues to fund coal, oil sands, and LNG expansion.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "JPMorgan publishes updated TCFD report with expanded Scope 3 financed emissions coverage",
+          source: "JPMorgan Annual ESG Report",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The expanded TCFD disclosure now covers 7 sectors including real estate and transport — up from 3 last year. Absolute financed emissions are disclosed for the first time. This is a material improvement in transparency, though the disclosed figures confirm the scale of fossil fuel exposure.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "Texas pension fund reinstates JPMorgan after bank publicly distances itself from ESG coalition",
+          source: "Texas Tribune / Wall Street Journal",
+          verdict: "questionable",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "JPMorgan quietly withdrew from the Net-Zero Banking Alliance's emissions accountability framework under political pressure while retaining membership. This signals a weakening of hard commitments in favour of softer voluntary pledges — a pattern that undermines the credibility of financial sector net-zero architecture.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "JPMorgan commits $500M to climate adaptation finance for Pacific Island and coastal nations",
+          source: "UN Climate Finance Partnership",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The adaptation finance commitment addresses a historically underfunded area where commercial banks have been largely absent. Structured as concessional lending with DFI co-investment, this is additive capital rather than repackaged existing flows — a credible signal in sustainable development finance.",
+        },
+      ],
+    },
+  },
+};
+
+export default jpmorgan;

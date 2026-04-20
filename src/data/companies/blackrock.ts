@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const blackrock: CompanyData = {
+  name: "BlackRock Inc.",
+  ticker: "BLK",
+  sector: "Financials",
+  country: "USA",
+  score: 62,
+  e: 60,
+  s: 63,
+  g: 65,
+  csr: "B",
+  frameworks: ["TCFD", "GRI", "SASB", "UNSDG", "PRI"],
+  frameworkRatings: { TCFD: "B+", GRI: "B", SASB: "B", UNSDG: "B", PRI: "A-" },
+  hq: "New York, USA",
+  employees: "21,000",
+  revenue: "$19.9B",
+  tags: ["Asset Management", "ESG Investing", "Stewardship", "Climate Risk"],
+  badge: { label: "Climate Risk Stewardship", icon: "📊", color: "from-slate-800 to-slate-600" },
+  about:
+    "BlackRock is the world's largest asset manager with over $10 trillion in assets under management. CEO Larry Fink's annual letters to corporate leaders helped define the mainstreaming of ESG investing. However, BlackRock has faced growing criticism from both ESG advocates (for continued fossil fuel holdings and weakening voting records) and anti-ESG political forces (for perceived overreach in imposing climate criteria on clients). It occupies a uniquely pressured position in the ESG landscape.",
+  extended: {
+    emissions: {
+      value: "0.26M tCO₂e",
+      trend: "-28% vs 2019",
+      trendDir: "down",
+      goal: "Net Zero by 2050",
+      goalDetail: "Own operations net-zero by 2030 · Portfolio alignment path by 2050",
+    },
+    progressMetrics: [
+      { label: "Renewable Energy (Operations)",           pct: 100, detail: "100% renewable electricity for all global offices since 2022 via RECs and direct PPAs" },
+      { label: "Portfolio Climate Data Coverage",         pct: 72,  detail: "72% of AUM has climate data sufficient for TCFD scenario analysis — up from 45% in 2020" },
+      { label: "Net-Zero Aligned Fund AUM (% of total)", pct: 24,  detail: "$2.4T of $10T AUM in funds with explicit net-zero alignment mandates — growing but minority of total" },
+    ],
+    emissionsBreakdown: [
+      { label: "Business Travel & Commute",   pct: 48, value: "0.12M tCO₂e", color: "#ef4444" },
+      { label: "Office Energy Use",           pct: 29, value: "0.08M tCO₂e", color: "#f97316" },
+      { label: "Supply Chain (Scope 3)",      pct: 15, value: "0.04M tCO₂e", color: "#f59e0b" },
+      { label: "Data Centres & Technology",   pct: 8,  value: "0.02M tCO₂e", color: "#84cc16" },
+    ],
+    highlights: [
+      { value: "$10T",  label: "Assets under management",                    icon: "📊" },
+      { value: "$550B", label: "Sustainable investment AUM",                  icon: "🌱" },
+      { value: "100%",  label: "Renewable electricity in operations",         icon: "☀️" },
+      { value: "4,500+",label: "Portfolio companies engaged on climate risk", icon: "🤝" },
+      { value: "2030",  label: "Own operations net-zero target",              icon: "🎯" },
+    ],
+    risks: [
+      { label: "Weakening ESG Voting Record",       detail: "BlackRock supported only 7% of environmental and social shareholder resolutions in 2023, down from 47% in 2021 — a dramatic shift that undermines its stewardship leadership narrative.", dot: "bg-red-400" },
+      { label: "Anti-ESG Political Exposure",       detail: "19 US states have divested or threatened to divest public pension funds from BlackRock over ESG practices. This political pressure creates business risk and has already cost $3B+ in state redemptions.", dot: "bg-amber-400" },
+      { label: "Fossil Fuel Holdings Contradiction",detail: "BlackRock holds over $300B in fossil fuel company equity via index funds. Its passive investment strategy means climate commitments at the fund level are constrained by index composition — a fundamental tension in the business model.", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 59.5 },
+        { label: "Jan '26", score: 60.0 },
+        { label: "Feb '26", score: 60.5 },
+        { label: "Mar '26", score: 61.0 },
+        { label: "Apr W1",  score: 61.2 },
+        { label: "Apr W2",  score: 61.6 },
+        { label: "Apr W3",  score: 62.0 },
+      ],
+      weeklyDeltas: [0.5, 0.5, 0.5, 0.2, 0.4],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "BlackRock launches $1B climate infrastructure fund targeting emerging market energy transition",
+          source: "BlackRock Alternative Investors / FT",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The climate infrastructure fund targets utility-scale solar, onshore wind, and transmission assets in India, Brazil, and South Africa — markets where capital scarcity is the primary barrier to clean energy deployment. The $1B fund size is modest relative to BlackRock's AUM but the emerging market focus is genuinely additive to the global clean energy transition capital stack.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "BlackRock votes against 91% of climate-related shareholder resolutions at annual meetings",
+          source: "As You Sow Proxy Voting Analysis",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "As You Sow's analysis of BlackRock's 2025 proxy season shows a 91% opposition rate on climate resolutions — the lowest of any major asset manager and a sharp reversal from 2020–2021. This directly contradicts BlackRock's stated fiduciary duty framing that climate risk is investment risk. The voting record is the clearest measure of stewardship intent and it is deeply at odds with public statements.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "BlackRock TCFD report discloses portfolio alignment with 2.8°C warming scenario under current holdings",
+          source: "BlackRock Sustainability Report 2025",
+          verdict: "questionable",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "BlackRock's own climate scenario analysis shows its total portfolio is aligned with a 2.8°C warming pathway — well above the Paris Agreement 1.5°C target it publicly champions. The disclosure is commendably transparent and the gap to target is acknowledged, but it highlights the fundamental contradiction between fiduciary passive management and active climate stewardship.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "Larry Fink annual letter drops 'ESG' terminology entirely, pivots to 'energy pragmatism' framing",
+          source: "BlackRock 2026 CEO Letter / Bloomberg",
+          verdict: "questionable",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The semantic shift from 'ESG' to 'transition investing' and 'energy pragmatism' in Fink's annual letter reflects the intensified political environment around ESG branding in the US. Whether this represents a genuine philosophical shift or strategic repositioning is unclear — the underlying investment products and stewardship policies are largely unchanged, but the messaging signals reduced institutional appetite for ESG advocacy.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "BlackRock Aladdin platform adds real-time physical climate risk scoring for 35,000 securities",
+          source: "BlackRock Technology / Risk.net",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Integrating physical climate risk (flood, heat, drought, sea-level rise) into the Aladdin risk management platform used by 1,000+ institutional investors creates genuine systemic value. This goes beyond BlackRock's own portfolio — it embeds climate risk into the risk management infrastructure of the broader institutional investment industry, a durable and scalable contribution.",
+        },
+      ],
+    },
+  },
+};
+
+export default blackrock;

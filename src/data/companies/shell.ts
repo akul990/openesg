@@ -1,0 +1,111 @@
+import type { CompanyData } from "./types";
+
+const shell: CompanyData = {
+  name: "Shell plc",
+  ticker: "SHEL",
+  sector: "Energy",
+  country: "UK",
+  score: 49,
+  e: 38,
+  s: 57,
+  g: 61,
+  csr: "C",
+  frameworks: ["GRI", "TCFD", "ISSB", "SASB", "UNGC"],
+  frameworkRatings: { GRI: "C", TCFD: "C+", ISSB: "C", SASB: "C", UNGC: "B-" },
+  hq: "London, UK",
+  employees: "103,000",
+  revenue: "$316.6B",
+  tags: ["Oil & Gas", "LNG", "Renewables Transition", "Energy Transition"],
+  badge: { label: "Powering Progress Strategy", icon: "⚡", color: "from-yellow-700 to-red-600" },
+  about:
+    "Shell is one of the world's largest energy companies, operating across oil, gas, chemicals, and increasingly renewables and EV charging. Its 2021 'Powering Progress' strategy targets net-zero emissions by 2050, but a landmark Dutch court ruling in 2021 ordered Shell to cut emissions faster than planned — making it the world's first company judicially compelled to align with the Paris Agreement.",
+  extended: {
+    emissions: {
+      value: "1.05B tCO₂e",
+      trend: "−5% vs 2016 (net carbon intensity)",
+      trendDir: "down",
+      goal: "Net Zero by 2050",
+      goalDetail: "30% net carbon intensity cut by 2030; absolute Scope 1&2 cut by 50% vs 2016",
+    },
+    progressMetrics: [
+      { label: "Net Carbon Intensity Reduction", pct: 17, detail: "17% NCI reduction vs 2016 baseline · 30% target by 2030" },
+      { label: "Renewable Power Capacity (GW)",  pct: 22, detail: "5.5 GW renewable power capacity · 25 GW target by 2035" },
+      { label: "EV Charging Points Deployed",    pct: 31, detail: "180,000 of 500,000 target charge points globally deployed" },
+    ],
+    emissionsBreakdown: [
+      { label: "Scope 3 (Product Use)",    pct: 85, value: "893M tCO₂e",  color: "#dc2626" },
+      { label: "Scope 1 (Operations)",     pct: 11, value: "115M tCO₂e",  color: "#ea580c" },
+      { label: "Scope 2 (Energy)",         pct: 2,  value: "21M tCO₂e",   color: "#d97706" },
+      { label: "Methane Emissions",        pct: 2,  value: "21M tCO₂e",   color: "#ca8a04" },
+    ],
+    highlights: [
+      { value: "180K", label: "EV charge points globally",       icon: "⚡" },
+      { value: "$10B", label: "Low-carbon investment (2023)",     icon: "🌱" },
+      { value: "5.5GW",label: "Renewable power capacity",        icon: "☀️" },
+      { value: "17%",  label: "Net carbon intensity reduction",   icon: "📉" },
+      { value: "2050", label: "Net-zero target year",             icon: "🎯" },
+    ],
+    risks: [
+      { label: "Scope 3 Emissions Dominance",  detail: "85% of Shell's emissions are Scope 3 (product combustion) — largely outside direct control and growing with LNG expansion.", dot: "bg-red-400" },
+      { label: "Dutch Court Climate Ruling",   detail: "Shell is appealing the 2021 Hague District Court ruling requiring 45% absolute emissions cut by 2030, creating significant legal risk.", dot: "bg-red-400" },
+      { label: "LNG Expansion vs. Net Zero",   detail: "Shell is simultaneously expanding LNG infrastructure and claiming net-zero leadership — a fundamental contradiction flagged by investors.", dot: "bg-amber-400" },
+    ],
+    weeklyWatch: {
+      weekOf: "Apr 14–18, 2026",
+      priorHistory: [
+        { label: "Dec '25", score: 46.0 },
+        { label: "Jan '26", score: 46.5 },
+        { label: "Feb '26", score: 47.0 },
+        { label: "Mar '26", score: 47.8 },
+        { label: "Apr W1",  score: 48.4 },
+        { label: "Apr W2",  score: 48.8 },
+        { label: "Apr W3",  score: 49.0 },
+      ],
+      weeklyDeltas: [-0.8, 0.5, -1.0, 0.7, -0.4],
+      items: [
+        {
+          date: "Apr 14, 2026",
+          headline: "Shell appeals landmark Dutch climate ruling as appeal court sets hearing for June 2026",
+          source: "Reuters / Milieudefensie",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Shell continues to fight the 2021 Hague ruling that required a 45% emissions cut by 2030. This legal strategy of appealing instead of complying materially undermines Shell's public net-zero narrative. The appeal outcome will set a global precedent for corporate climate accountability.",
+        },
+        {
+          date: "Apr 15, 2026",
+          headline: "Shell deploys 180,000 EV charge points globally, ahead of 2025 interim target",
+          source: "Shell Press Release",
+          verdict: "genuine",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "The 180,000 charge point milestone is verified through Shell Recharge network data. At current deployment rates, the 500,000 target appears achievable by 2030. However, EV charging represents less than 0.5% of Shell's revenue and is insufficient to offset Scope 3 emissions from fossil fuels.",
+        },
+        {
+          date: "Apr 16, 2026",
+          headline: "Shell's Q1 2026 LNG output hits record high — directly contradicts climate transition claims",
+          source: "Financial Times / Shell Quarterly Report",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Shell's record LNG production in Q1 2026 locks in decades of fossil fuel infrastructure. Each new LNG terminal has a 30-40 year operational lifetime. This directly contradicts Paris-aligned transition scenarios which require no new fossil fuel projects after 2021.",
+        },
+        {
+          date: "Apr 17, 2026",
+          headline: "Shell reduces 2030 renewable investment target by 25% in strategic review",
+          source: "Shell Capital Markets Day / Bloomberg",
+          verdict: "greenwashing",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Shell cut its 2030 renewable energy investment target from $4B to $3B annually, citing returns 'below hurdle rate.' This represents a material regression from previous commitments and signals that shareholder pressure for short-term returns is overriding the energy transition strategy.",
+        },
+        {
+          date: "Apr 18, 2026",
+          headline: "Shell launches $500M nature-based solutions portfolio for carbon removal verification",
+          source: "Shell Sustainability Report",
+          verdict: "questionable",
+          relatedGoal: "Net Zero by 2050",
+          analysis: "Nature-based offsets are scientifically contested for permanence and additionality. Shell's reliance on offsets for net-zero rather than absolute emissions reductions is a pattern flagged by Science Based Targets initiative (SBTi). Until independently verified, this counts as financial offsetting rather than real-world decarbonisation.",
+        },
+      ],
+    },
+  },
+};
+
+export default shell;
