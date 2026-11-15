@@ -30,6 +30,15 @@ const leadership = [
     initials: "KB",
     focus: ["AI & NLP", "Platform Architecture", "Data Engineering"],
   },
+  {
+    name: "Abhishek Kumar",
+    role: "Head of Sales",
+    location: "India",
+    bio: "Leads openESG's sales function end-to-end — building the pipeline, onboarding new investors and companies, and translating customer feedback into platform priorities.",
+    bg: "bg-amber-600",
+    initials: "AK",
+    focus: ["Sales", "Partnerships", "Customer Growth"],
+  },
 ];
 
 const values = [
@@ -89,9 +98,9 @@ export default function TeamPage() {
         {/* ── Leadership ───────────────────────── */}
         <section className="bg-white py-14 sm:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Founders</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Leadership</h2>
             <p className="mt-3 text-base text-slate-600">
-              Built from the ground up by two founders on a mission to make ESG data honest, transparent, and accessible to everyone.
+              Built on a mission to make ESG data honest, transparent, and accessible to everyone.
             </p>
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {leadership.map(({ name, role, location, bio, bg, initials, focus }) => (

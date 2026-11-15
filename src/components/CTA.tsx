@@ -16,21 +16,7 @@ export function CTA() {
         <p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-white/70 sm:text-lg">
           Join companies that automated their ESG compliance in hours, not quarters — no sustainability team, no Big 4 retainer, no six-figure reporting project.
         </p>
-        <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-          <button
-            type="button"
-            className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-primary shadow-lg transition-all duration-200 hover:bg-accent/90 hover:shadow-xl"
-          >
-            Start Free Today
-          </button>
-          <button
-            type="button"
-            className="rounded-full border-2 border-white/80 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white hover:bg-white/10"
-          >
-            See a Sample Report
-          </button>
-        </div>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-8">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-8">
           {badges.map((label) => (
             <div
               key={label}

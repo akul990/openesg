@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   },
 };
 import { Hero } from "@/src/components/Hero";
-import { LogoStrip } from "@/src/components/LogoStrip";
 import { HowItWorks } from "@/src/components/HowItWorks";
 import { Features } from "@/src/components/Features";
 import { RatingDemo } from "@/src/components/RatingDemo";
@@ -31,7 +30,6 @@ export default function Home() {
       <main className="flex-1">
         <SpeedInsights />
         <Hero />
-        <LogoStrip />
         <HowItWorks />
         <Features />
         <RatingDemo />

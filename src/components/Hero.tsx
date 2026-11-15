@@ -94,12 +94,6 @@ export function Hero() {
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <button
               type="button"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:bg-accent/90 hover:shadow-xl"
-            >
-              Get Your ESG Score Free
-            </button>
-            <button
-              type="button"
               onClick={() => setSearchOpen(true)}
               className="rounded-full border-2 border-white/80 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white hover:bg-white/10"
             >
