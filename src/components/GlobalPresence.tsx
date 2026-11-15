@@ -5,8 +5,7 @@ import { Globe } from "lucide-react";
 import worldmapSrc from "@/src/assets/worldmap.svg";
 
 const stats = [
-  { value: "500+", label: "Clients" },
-  { value: "40+", label: "Countries" },
+  { value: "40+", label: "Countries Covered" },
   { value: "10+", label: "Industries" },
   { value: "6+", label: "Frameworks" },
 ];
@@ -58,11 +57,11 @@ export function GlobalPresence() {
 
         {/* Heading */}
         <h2 className="mt-5 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-          Trusted Across the Globe
+          Built for Global ESG Compliance
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-base text-white/65 sm:text-lg">
-          Empowering organisations worldwide with comprehensive ESG solutions
-          and sustainability expertise across every major region.
+          Mapping sustainability data to every major framework and region —
+          wherever your business operates.
         </p>
 
         {/* Stats */}
